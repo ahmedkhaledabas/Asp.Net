@@ -1,0 +1,15 @@
+﻿@using ContactDoctor.Models
+@model List<Doctor>
+<h1>Book An Appoinment</h1>
+<div class="container" style="display:flex">
+    @foreach(var doctor in Model){
+    <div class="card" style="width: 18rem;" >
+        <img src="/images/@doctor.Img" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@doctor.Name</h5>
+            <p class="card-text">@doctor.Specialization</p>
+            <a href="/Doctor/Appointment?id=@doctor.Id" class="btn btn-primary">Book An Appoinment</a>
+        </div>
+    </div>
+    }
+</div>

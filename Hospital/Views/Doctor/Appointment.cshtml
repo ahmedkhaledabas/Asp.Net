@@ -1,0 +1,30 @@
+﻿@using ContactDoctor.Models
+@model Doctor
+<div id="appointmentInfo" style="display:none;" class="alert alert-success">
+    <strong>Success!</strong> Patient Add.
+</div>
+<h1>Complete Appointment With @Model.Name</h1>
+<form >
+    <div class="mb-3">
+        <label for="patient_name" class="form-label">Patient Name</label>
+        <input type="text" class="form-control" name="patient_name" placeholder="Ahmed Khaled" required >
+    </div>
+    <div class="mb-3">
+        <label for="appointment_date" class="form-label">Email address</label>
+        <input type="date" class="form-control" name="appointment_date" required>
+    </div>
+    <div class="mb-3">
+        <label for="appointment_time" class="form-label">Email address</label>
+        <input type="time" class="form-control" name="appointment_time" required>
+    </div>
+    <button type="submit" onclick="myFunction()" class="btn btn-primary">Complete Appointment</button>
+</form>
+
+
+
+<script>
+    function myFunction() {
+        document.getElementById("appointmentInfo").style.display = "block";
+    }
+</script>
+
