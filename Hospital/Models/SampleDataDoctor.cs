@@ -1,8 +1,11 @@
-﻿namespace ContactDoctor.Models
+﻿using Hospital.Models;
+
+namespace ContactDoctor.Models
 {
     public class SampleDataDoctor
     {
         public List<Doctor> doctors;
+      
         public SampleDataDoctor()
         {
             doctors = new List<Doctor>

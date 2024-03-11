@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Hospital\\Hospital.csproj": {}
+    "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\Hospital\\Hospital.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Hospital\\Hospital.csproj": {
+    "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\Hospital\\Hospital.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Hospital\\Hospital.csproj",
+        "projectUniqueName": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\Hospital\\Hospital.csproj",
         "projectName": "Hospital",
-        "projectPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Hospital\\Hospital.csproj",
+        "projectPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\Hospital\\Hospital.csproj",
         "packagesPath": "C:\\Users\\Num 1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Hospital\\obj\\",
+        "outputPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\Hospital\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Num 1\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.12, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

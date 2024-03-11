@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Hospital.Models.Reservation>
+<h1>Reservation Management</h1>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var reserve in Model)
+        {
+            <tr>
+            <th >@reserve.Patient</th>
+            <td>@reserve.Date</td>
+            <td>@reserve.Time</td>
+        </tr>
+        }
+        
+        
+    </tbody>
+</table>

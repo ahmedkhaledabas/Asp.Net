@@ -4,18 +4,18 @@
     <strong>Success!</strong> Patient Add.
 </div>
 <h1>Complete Appointment With @Model.Name</h1>
-<form >
+<form method="get" action="/Doctor/AddReservation">
     <div class="mb-3">
-        <label for="patient_name" class="form-label">Patient Name</label>
-        <input type="text" class="form-control" name="patient_name" placeholder="Ahmed Khaled" required >
+        <label for="Patient" class="form-label">Patient Name</label>
+        <input type="text" class="form-control" name="Patient" placeholder="Ahmed Khaled" required>
     </div>
     <div class="mb-3">
-        <label for="appointment_date" class="form-label">Email address</label>
-        <input type="date" class="form-control" name="appointment_date" required>
+        <label for="Date" class="form-label">Email address</label>
+        <input type="date" class="form-control" name="Date" required>
     </div>
     <div class="mb-3">
-        <label for="appointment_time" class="form-label">Email address</label>
-        <input type="time" class="form-control" name="appointment_time" required>
+        <label for="Time" class="form-label">Email address</label>
+        <input type="time" class="form-control" name="Time" required>
     </div>
     <button type="submit" onclick="myFunction()" class="btn btn-primary">Complete Appointment</button>
 </form>
