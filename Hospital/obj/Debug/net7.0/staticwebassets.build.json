@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5Bt3D3C1iX3+uiP+NxiE9Lo40qs1JMhNPsdz+frlR+0=",
+  "Hash": "KQXd/fhKychorwvjKSl4dfzRCu5VgVrGmjJqCTFO74w=",
   "Source": "Hospital",
   "BasePath": "_content/Hospital",
   "Mode": "Default",
@@ -205,6 +205,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\doctor6.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\Hospital\\wwwroot\\images\\Hospital.jpg",
+      "SourceId": "Hospital",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\Hospital\\wwwroot\\",
+      "BasePath": "_content/Hospital",
+      "RelativePath": "images/Hospital.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Hospital.jpg"
     },
     {
       "Identity": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\Hospital\\wwwroot\\js\\site.js",

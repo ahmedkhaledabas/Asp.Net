@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\Hospital\\wwwroot\\images\\Hospital.jpg",
+      "PackagePath": "staticwebassets\\images\\Hospital.jpg"
+    },
+    {
       "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\Hospital\\wwwroot\\images\\doctor1.jpg",
       "PackagePath": "staticwebassets\\images\\doctor1.jpg"
     },

@@ -29,13 +29,14 @@ namespace Hospital.Controllers
 
 
         [HttpGet]
-        public IActionResult AddReservation(Reservation reservation)
+        public IActionResult AddReservation()
         {
-            _reservations.Add( new Reservation()
+            _reservations.Add(new Reservation()
             {
                 Patient = Request.Query["Patient"],
                 Date = DateOnly.Parse(Request.Query["Date"]),
-                Time = TimeOnly.Parse(Request.Query["Time"])
+                Time = TimeOnly.Parse(Request.Query["Time"]),
+                DoctorName = Request.Query["Doctor"]
             });
 
             return View("Reservation", _reservations);
