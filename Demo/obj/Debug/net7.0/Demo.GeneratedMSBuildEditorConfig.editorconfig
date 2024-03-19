@@ -9,63 +9,55 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Demo
 build_property.RootNamespace = Demo
-build_property.ProjectDir = C:\Users\Num 1\Documents\GitHub\Asp.Net\Asp.Net\Demo\
+build_property.ProjectDir = C:\Users\Num 1\Documents\GitHub\Asp.Net\Demo\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Num 1\Documents\GitHub\Asp.Net\Asp.Net\Demo
+build_property.MSBuildProjectDirectory = C:\Users\Num 1\Documents\GitHub\Asp.Net\Demo
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/Demo/Views/Home/Index.cshtml]
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Demo/Views/Category/CreateNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ3JlYXRlTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Demo/Views/Category/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Demo/Views/Category/ShowProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcU2hvd1Byb2R1Y3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Demo/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/Demo/Views/Home/Privacy.cshtml]
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Demo/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/Demo/Views/Product/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Demo/Views/Home/ShowProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93UHJvZHVjdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/Demo/Views/Shared/Error.cshtml]
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Demo/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/Demo/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Demo/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/Demo/Views/Student/Desc.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxEZXNjLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/Demo/Views/Student/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/Demo/Views/Test/big.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxiaWcuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/Demo/Views/Test/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/Demo/Views/Test/small.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxzbWFsbC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/Demo/Views/_ViewImports.cshtml]
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Demo/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/Demo/Views/_ViewStart.cshtml]
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Demo/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/Demo/Views/Shared/_Layout.cshtml]
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Demo/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-xwylo3ageb

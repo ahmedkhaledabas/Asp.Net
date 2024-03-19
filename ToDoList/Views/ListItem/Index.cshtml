@@ -1,0 +1,78 @@
+﻿@model List<ListItem>
+
+<h1>Welcome, <span style="color:blue">@ViewData["name"]</span> </h1>
+<p>Here's your to-do list :</p>
+<a href="/ListItem/CreateNewList">Create New </a>
+
+@{
+    if(Model.Count > 0)
+    {
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">DeadLine</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+             <tr>
+                <th>@item.Id</th>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>@item.DeadLine</td>
+                        <td><a class="btn btn-danger" id="deleteButton1" href="/ListItem/Delete/@item.Id">Delete</a> <a class="btn btn-info" href="/ListItem/Edit/@item.Id">Edit</a></td>
+            </tr>
+            <div class="modal" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want delete this item ?</p>
+            </div>
+            <div class="modal-footer">
+                    <a id="deleteLink" class="btn btn-primary" href="/ListItem/Delete/@item.Id">Yes</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+            }
+        </tbody>
+    </table>
+    }
+    else
+    {
+        <h1 class="display-4">No Items Available</h1>
+    }
+
+
+
+
+}
+
+
+
+
+
+<script>
+    var deleteButtons = document.querySelectorAll(".btn-danger");
+
+    deleteButtons.forEach(function (button) {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            var modal = new bootstrap.Modal(document.getElementById("deleteModal"));
+            modal.show();
+            var deleteLink = document.getElementById("deleteLink");
+            deleteLink.href = event.target.getAttribute("href");
+        });
+    });
+</script>
+

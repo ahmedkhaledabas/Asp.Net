@@ -1,8 +1,28 @@
-﻿@{
+﻿@model List<Brand>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">All Brands</h1>
 </div>
+
+<div class="row">
+    @foreach (Brand brand in Model)
+    {
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                @{
+                    var imageName = brand.BrandName + ".png";
+                }
+                <img class="card-img-top" style="height:200px " src="/Images/@imageName" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@brand.BrandName</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="/Home/ShowProducts/@brand.BrandId" class="btn btn-primary">Show All Products</a>
+                </div>
+            </div><br /><br />
+        </div>
+    }
+</div>
+

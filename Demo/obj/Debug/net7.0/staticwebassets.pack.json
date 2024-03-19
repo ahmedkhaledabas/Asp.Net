@@ -5,32 +5,48 @@
       "PackagePath": "staticwebassets\\Demo.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\Images\\Electra.png",
+      "PackagePath": "staticwebassets\\Images\\Electra.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\Images\\Haro.png",
+      "PackagePath": "staticwebassets\\Images\\Haro.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\Images\\Heller.png",
+      "PackagePath": "staticwebassets\\Images\\Heller.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\Images\\Pure Cycles.png",
+      "PackagePath": "staticwebassets\\Images\\Pure Cycles.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\Images\\Ritchey.png",
+      "PackagePath": "staticwebassets\\Images\\Ritchey.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\Images\\Strider.png",
+      "PackagePath": "staticwebassets\\Images\\Strider.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\Images\\Sun Bicycles.png",
+      "PackagePath": "staticwebassets\\Images\\Sun Bicycles.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\Images\\Surly.png",
+      "PackagePath": "staticwebassets\\Images\\Surly.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\Images\\Trek.png",
+      "PackagePath": "staticwebassets\\Images\\Trek.png"
+    },
+    {
       "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
-    },
-    {
-      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\images\\1.png",
-      "PackagePath": "staticwebassets\\images\\1.png"
-    },
-    {
-      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\images\\2.png",
-      "PackagePath": "staticwebassets\\images\\2.png"
-    },
-    {
-      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\images\\3.png",
-      "PackagePath": "staticwebassets\\images\\3.png"
-    },
-    {
-      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\images\\4.png",
-      "PackagePath": "staticwebassets\\images\\4.png"
-    },
-    {
-      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\images\\5.png",
-      "PackagePath": "staticwebassets\\images\\5.png"
     },
     {
       "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\wwwroot\\js\\site.js",
