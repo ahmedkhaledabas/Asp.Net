@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Demo.Models;
+namespace Demo;
 
 [Table("products", Schema = "production")]
 public partial class Product

@@ -1,0 +1,22 @@
+﻿@model List<Product>
+<h1 class="display-4"> There Are [ <span class="text-info">@Model.Count </span> ] Bikes </h1>
+<div class="row">
+    @foreach (var product in Model)
+    {
+
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" style="height:230px" src="~/Images/bike.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@product.ProductName</h5>
+                    <h5 class="card-title">@product.Category.CategoryName</h5>
+                    <p class="card-text"><span class="font-weight-bold">Model Year</span> @product.ModelYear</p>
+                    <p class="card-text"><span class="font-weight-bold"> $ </span> @product.ListPrice</p>
+                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                </div>
+            </div>
+            <br />
+        </div>
+
+    }
+</div>

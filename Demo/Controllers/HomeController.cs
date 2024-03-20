@@ -1,5 +1,4 @@
-﻿using Demo.Data;
-using Demo.Models;
+﻿using Demo.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -14,11 +13,9 @@ namespace Demo.Controllers
             _logger = logger;
         }
 
-        BikeStoresContext context = new BikeStoresContext();
-
         public IActionResult Index()
         {
-            return View(context.Brands.ToList());
+            return View();
         }
 
         public IActionResult Privacy()
@@ -30,11 +27,6 @@ namespace Demo.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        public IActionResult ShowProducts(int id)
-        {
-            return View(context.Products.Where(e => e.BrandId == id).ToList());
         }
     }
 }

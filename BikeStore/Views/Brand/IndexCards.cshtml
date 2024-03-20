@@ -1,0 +1,21 @@
+﻿@model List<Brand>
+<h1 class="display-4"> All Categories </h1>
+<div class="row">
+@foreach(var brand in Model)
+{
+        var image = @brand.BrandName + ".png";
+
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+  <img class="card-img-top" style="height:230px" src="~/Images/Brands/@image" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">@brand.BrandName</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="/Brand/ShowProducts/@brand.BrandId" class="btn btn-primary">Show Products</a>
+  </div>
+</div>
+            <br />
+        </div>
+
+}
+</div>

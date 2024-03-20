@@ -2973,11 +2973,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\Demo.csproj",
+      "projectUniqueName": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\Demo\\Demo.csproj",
       "projectName": "Demo",
-      "projectPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\Demo.csproj",
+      "projectPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\Demo\\Demo.csproj",
       "packagesPath": "C:\\Users\\Num 1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Demo\\obj\\",
+      "outputPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\Demo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Num 1\\AppData\\Roaming\\NuGet\\NuGet.Config",

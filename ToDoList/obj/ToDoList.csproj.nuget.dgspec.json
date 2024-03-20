@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\ToDoList\\ToDoList.csproj": {}
+    "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ToDoList\\ToDoList.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\ToDoList\\ToDoList.csproj": {
+    "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ToDoList\\ToDoList.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\ToDoList\\ToDoList.csproj",
+        "projectUniqueName": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ToDoList\\ToDoList.csproj",
         "projectName": "ToDoList",
-        "projectPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\ToDoList\\ToDoList.csproj",
+        "projectPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ToDoList\\ToDoList.csproj",
         "packagesPath": "C:\\Users\\Num 1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\ToDoList\\obj\\",
+        "outputPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ToDoList\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Num 1\\AppData\\Roaming\\NuGet\\NuGet.Config",
