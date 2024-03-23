@@ -1,0 +1,11 @@
+﻿@model Product
+
+<div class="w-100 card">
+    <img style="height:400px" class="card-img-top" src="/Images/bike.jpg" alt="Product Image">
+    <div class="card-body">
+        <h5 class="card-title">@Model.ProductName</h5>
+        <h6>Quantity : @ViewData["quantity"]</h6>
+        <h6> Tota Price : @(ViewBag.quantity * Model.ListPrice)</h6>
+        <a href="#" class="btn btn-primary">Buy</a>
+    </div>
+</div>

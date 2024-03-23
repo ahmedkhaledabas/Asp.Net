@@ -12,7 +12,26 @@
                     <h5 class="card-title">@product.Category.CategoryName</h5>
                     <p class="card-text"><span class="font-weight-bold">Model Year</span> @product.ModelYear</p>
                     <p class="card-text"><span class="font-weight-bold"> $ </span> @product.ListPrice</p>
-                    <a href="#" class="btn btn-primary">Add To Cart</a>
+
+                    <form method="post" action="/Cart/Add">
+                        <input type="hidden" name="id" value="@product.ProductId"/>
+                        <div class="row">
+                            <div class="col-3 form-group">
+                                <select name="quantity" class="form-select">
+                                    @for (int i = 1; i < 10; i++)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                </select>
+                            </div>
+                            <button class="col-8 btn btn-primary" type="submit">Add To Cart</button>
+                    </div>
+                        </form>
+                        
+
+
+                  
+                  
                 </div>
             </div>
             <br />

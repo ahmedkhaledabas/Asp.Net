@@ -41,6 +41,34 @@
       "PackagePath": "staticwebassets\\Images\\Brands\\Trek.png"
     },
     {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\BikeStore\\wwwroot\\Images\\Categories\\Children Bikes.png",
+      "PackagePath": "staticwebassets\\Images\\Categories\\Children Bikes.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\BikeStore\\wwwroot\\Images\\Categories\\Comfort Bikes.png",
+      "PackagePath": "staticwebassets\\Images\\Categories\\Comfort Bikes.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\BikeStore\\wwwroot\\Images\\Categories\\Cruisers Bikes.png",
+      "PackagePath": "staticwebassets\\Images\\Categories\\Cruisers Bikes.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\BikeStore\\wwwroot\\Images\\Categories\\Cyclocross Bikes.png",
+      "PackagePath": "staticwebassets\\Images\\Categories\\Cyclocross Bikes.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\BikeStore\\wwwroot\\Images\\Categories\\Electric Bikes.png",
+      "PackagePath": "staticwebassets\\Images\\Categories\\Electric Bikes.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\BikeStore\\wwwroot\\Images\\Categories\\Mountain Bikes.png",
+      "PackagePath": "staticwebassets\\Images\\Categories\\Mountain Bikes.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\BikeStore\\wwwroot\\Images\\Categories\\Road Bikes.png",
+      "PackagePath": "staticwebassets\\Images\\Categories\\Road Bikes.png"
+    },
+    {
       "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\BikeStore\\wwwroot\\Images\\bike.jpg",
       "PackagePath": "staticwebassets\\Images\\bike.jpg"
     },

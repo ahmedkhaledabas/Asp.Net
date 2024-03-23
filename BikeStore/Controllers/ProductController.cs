@@ -53,32 +53,35 @@ namespace BikeStore.Controllers
             return View(product);
         }
 
-
-
-
-        public IActionResult SaveChanges(int id, string productName, short modelYear, decimal listPrice, int brandId, int categoryId)
+        public IActionResult ShowProducts(int id)
         {
-            var productEdite = context.Products.First(e => e.ProductId == id);
-            productEdite.ProductName = productName;
-            productEdite.ListPrice = listPrice;
-            productEdite.ModelYear = modelYear;
-            productEdite.BrandId = brandId;
-            productEdite.CategoryId = categoryId;
-            context.SaveChanges();
-            return RedirectToAction("Index");
+            return View(context.Products.Include(e => e.Category).Where(e => e.BrandId == id).ToList());
         }
 
 
-        //public IActionResult SaveChanges(Product product)
+        //public IActionResult SaveChanges(int id, string productName, short modelYear, decimal listPrice, int brandId, int categoryId)
         //{
-        //    var Edite = context.Products.First(e => e.ProductId == product.ProductId);
-        //    Edite.ProductName = product.ProductName;
-        //    Edite.ListPrice = product.ListPrice;
-        //    Edite.ModelYear = product.ModelYear;
-        //    Edite.BrandId = product.BrandId;
-        //    Edite.CategoryId = product.CategoryId;
+        //    var productEdite = context.Products.First(e => e.ProductId == id);
+        //    productEdite.ProductName = productName;
+        //    productEdite.ListPrice = listPrice;
+        //    productEdite.ModelYear = modelYear;
+        //    productEdite.BrandId = brandId;
+        //    productEdite.CategoryId = categoryId;
         //    context.SaveChanges();
         //    return RedirectToAction("Index");
         //}
+
+
+        public IActionResult SaveChanges(Product product)
+        {
+            var Edite = context.Products.First(e => e.ProductId == product.ProductId);
+            Edite.ProductName = product.ProductName;
+            Edite.ListPrice = product.ListPrice;
+            Edite.ModelYear = product.ModelYear;
+            Edite.BrandId = product.BrandId;
+            Edite.CategoryId = product.CategoryId;
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

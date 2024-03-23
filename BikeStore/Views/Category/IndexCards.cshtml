@@ -1,0 +1,27 @@
+﻿@model List<Category>
+
+    <div class="container py-5">
+        <h1>All Categories</h1>
+        <div class="row">
+            @foreach(var category in Model)
+            {
+                var image = category.CategoryName + ".png";
+
+            <div class="col-md-12 col-lg-3 mb-4 mb-lg-0">
+                <div class="card">
+                   
+                    <img style="height:235px" src="/Images/Categories/@image" class="card-img-top" alt="category" />
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5 class="mb-0">@category.CategoryName</h5>
+                        </div>
+                        </div> 
+                        <a href="/Category/ShowProducts/@category.CategoryId" class="btn btn-primary">Show Products</a>
+                    </div>
+                   
+                    <br />
+            </div>
+            }
+        </div>
+    </div>

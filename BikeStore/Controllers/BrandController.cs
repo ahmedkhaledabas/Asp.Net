@@ -20,7 +20,7 @@ namespace BikeStore.Controllers
 
         public IActionResult ShowProducts(int id)
         {
-            return View(context.Products.Include(e => e.Category).Where(e=>e.BrandId == id).ToList());
+            return View(context.Products.Include(e => e.Category).Where(e => e.BrandId == id).ToList());
         }
     }
 }

@@ -26,8 +26,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmRcSW5kZXhDYXJkcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/BikeStore/Views/Brand/ShowProducts.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmRcU2hvd1Byb2R1Y3RzLmNzaHRtbA==
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/BikeStore/Views/Cart/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/BikeStore/Views/Category/Add.cshtml]
@@ -36,6 +36,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/BikeStore/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/BikeStore/Views/Category/IndexCards.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXhDYXJkcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/BikeStore/Views/Category/ShowProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcU2hvd1Byb2R1Y3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/BikeStore/Views/Home/Index.cshtml]
@@ -56,6 +64,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/BikeStore/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/BikeStore/Views/Product/ShowProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxTaG93UHJvZHVjdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/BikeStore/Views/Shared/Error.cshtml]
