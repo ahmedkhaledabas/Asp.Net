@@ -71,7 +71,7 @@ namespace BikeStore.Controllers
         //    return RedirectToAction("Index");
         //}
 
-
+        [ValidateAntiForgeryToken]
         public IActionResult SaveChanges(Product product)
         {
             var Edite = context.Products.First(e => e.ProductId == product.ProductId);

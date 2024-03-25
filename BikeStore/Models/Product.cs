@@ -19,9 +19,12 @@ public partial class Product
     public string ProductName { get; set; } = null!;
 
     [Column("brand_id")]
+    [Display(Name ="Brand Name")]
     public int BrandId { get; set; }
 
     [Column("category_id")]
+    [Display(Name = "Category Name")]
+
     public int CategoryId { get; set; }
 
     [Column("model_year")]

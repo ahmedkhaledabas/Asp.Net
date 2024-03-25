@@ -1,6 +1,6 @@
 ﻿@model Product
 @* <form method="post" action="/Product/SaveChanges/@Model.ProductId"> *@
-    <form method="post" action="/Product/SaveChanges">
+    @* <form method="post" action="/Product/SaveChanges">
     <input name="ProductId" id="ProductId" type="hidden" value="@Model.ProductId" />
     <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
@@ -53,4 +53,58 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Save Changes</button>
-</form>
+</form> *@
+
+
+@* 
+@{
+    SelectList brands = new SelectList(ViewBag.brands, "BrandId", "BrandName");
+
+    SelectList categories = new SelectList(ViewBag.category, "CategoryId", "CategoryName");
+}
+
+@using (Html.BeginForm("SaveChanges", "Product", FormMethod.Post))
+{
+    @Html.HiddenFor(e => e.ProductId)
+
+    @Html.LabelFor(e => e.ProductName)
+    @Html.TextBoxFor(e => e.ProductName, new {@class="form-control" })
+
+    @Html.LabelFor(e => e.ModelYear)
+    @Html.EditorFor(e => e.ModelYear, new { htmlAttributes = new { @class = "form-control" } })
+
+    @Html.LabelFor(e => e.ListPrice)
+    @Html.EditorFor(e => e.ListPrice, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+
+    @Html.LabelFor(e => e.BrandId)
+    @Html.DropDownListFor(e => e.BrandId, brands, new { @class = "form-select" })
+
+    @Html.LabelFor(e => e.CategoryId)
+    @Html.DropDownListFor(e => e.CategoryId, categories, new{ @class = "form-select" })
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+} *@
+
+@{
+    SelectList brands = new SelectList(ViewBag.brands, "BrandId", "BrandName");
+    SelectList categories = new SelectList(ViewBag.category, "CategoryId", "CategoryName");
+}
+
+<form asp-action="SaveChanges" asp-controller="Product" method="post">
+    <input type="hidden" asp-for="ProductId" />
+    <label asp-for="ProductName"></label>
+    <input asp-for="ProductName" class="form-control" />
+
+    <label asp-for="ModelYear"></label>
+    <input asp-for="ModelYear" class="form-control" />
+
+    <label asp-for="ListPrice"></label>
+    <input asp-for="ListPrice" class="form-control" />
+
+    <label asp-for="BrandId"></label>
+    <select asp-for="BrandId" class="form-select" asp-items="brands"></select>
+
+    <label asp-for="CategoryId"></label>
+    <select asp-for="CategoryId" class="form-select" asp-items="categories"></select>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
