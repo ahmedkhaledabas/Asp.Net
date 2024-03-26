@@ -6,25 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ETickets.Migrations
 {
     /// <inheritdoc />
-    public partial class intialDatabase : Migration
+    public partial class intial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "ActorMovies",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ActorsId = table.Column<int>(type: "int", nullable: false),
-                    MoviesId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ActorMovies", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Actors",
                 columns: table => new
@@ -91,10 +77,22 @@ namespace ETickets.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Movies", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Movies_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Movies_Cinemas_CinemaId",
+                        column: x => x.CinemaId,
+                        principalTable: "Cinemas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ActorMovie",
+                name: "ActorMovies",
                 columns: table => new
                 {
                     ActorsId = table.Column<int>(type: "int", nullable: false),
@@ -102,15 +100,15 @@ namespace ETickets.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ActorMovie", x => new { x.ActorsId, x.MoviesId });
+                    table.PrimaryKey("PK_ActorMovies", x => new { x.ActorsId, x.MoviesId });
                     table.ForeignKey(
-                        name: "FK_ActorMovie_Actors_ActorsId",
+                        name: "FK_ActorMovies_Actors_ActorsId",
                         column: x => x.ActorsId,
                         principalTable: "Actors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ActorMovie_Movies_MoviesId",
+                        name: "FK_ActorMovies_Movies_MoviesId",
                         column: x => x.MoviesId,
                         principalTable: "Movies",
                         principalColumn: "Id",
@@ -118,31 +116,38 @@ namespace ETickets.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ActorMovie_MoviesId",
-                table: "ActorMovie",
+                name: "IX_ActorMovies_MoviesId",
+                table: "ActorMovies",
                 column: "MoviesId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Movies_CategoryId",
+                table: "Movies",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Movies_CinemaId",
+                table: "Movies",
+                column: "CinemaId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ActorMovie");
-
-            migrationBuilder.DropTable(
                 name: "ActorMovies");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "Cinemas");
 
             migrationBuilder.DropTable(
                 name: "Actors");
 
             migrationBuilder.DropTable(
                 name: "Movies");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Cinemas");
         }
     }
 }

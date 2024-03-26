@@ -9,7 +9,7 @@ namespace ETickets.Controllers
         ETicketsDbContext Context = new ETicketsDbContext();
         public IActionResult Index()
         {
-            return View();
+            return View(Context.Categories.ToList());
         }
 
         public IActionResult ShowMovies(int id)

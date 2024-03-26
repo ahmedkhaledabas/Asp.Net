@@ -1,0 +1,48 @@
+﻿@model Actor
+
+<div class="card h-100">
+    <div class="row g-0">
+
+        <div class="col-md-6">
+            <img src="/images/cast/@Model.ProfilePicture" style="height:300px" class="img-fluid rounded-start" alt="Movie poster">
+        </div>
+
+
+        <div class="col-md-6">
+
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">@Model.FirstName @Model.LastName </h5>
+                <p class="card-text"><strong>Bio : </strong><small class="text-muted">@Model.Bio</small></p>
+                
+            </div>
+            <div class="card-footer">
+                    <!-- Facebook -->
+                    <a class="btn btn-primary" style="background-color: #3b5998;" href="#!" role="button">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                    <!-- Twitter -->
+                    <a class="btn btn-primary" style="background-color: #55acee;" href="#!" role="button">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a class="btn btn-primary" style="background-color: #ac2bac;" href="#!" role="button">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <!-- Youtube -->
+                    <a class="btn btn-primary" style="background-color: #ed302f;" href="#!" role="button">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <!-- Whatsapp -->
+                    <a class="btn btn-primary" style="background-color: #25d366;" href="#!" role="button">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+            </div>
+            
+        </div>
+
+
+    </div>
+</div>

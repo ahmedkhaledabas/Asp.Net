@@ -10,5 +10,7 @@
 
         public string CinemaLogo { get; set; } = null!;
         public string Address { get; set; } = null!;
+
+        public List<Movie> Movies { get; set; }
     }
 }

@@ -6,44 +6,77 @@
 <div class="container">
     <div class="row row-cols-1 row-cols-md-2 g-4">
 
-@foreach(var movie in Model)
-{
-<div class="card h-100">
-    <div class="row g-0">
+        @foreach (var movie in Model)
+        {
+            <div class="card h-100">
+                <div class="row g-0">
 
-        <div class="col-md-6">
-            <img src="/images/movies/@movie.ImgUrl" style="height:400px" class="img-fluid rounded-start" alt="Movie poster">
-        </div>
+                    <div class="col-md-6">
+                        <img src="/images/movies/@movie.ImgUrl" style="height:400px" class="img-fluid rounded-start" alt="Movie poster">
+                    </div>
 
 
-<div class="col-md-6">
+                    <div class="col-md-6">
 
-            <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">@movie.Name</h5>
-                    <p class="card-text"><small class="text-muted">MOONLIGHT - OCTOBER 28</small></p>
-                    <p class="card-text">Price: @movie.Price</p>
-                    <p class="card-text">
-                        <strong>Cinema:</strong> @movie.Cinema.Name<br>
-                        <strong>Start Date:</strong> @movie.StartDate<br>
-                        <strong>End Date:</strong> @movie.EndDate<br>
-                        <strong>Category: </strong><a href="/Category/ShowMovies/@movie.CategoryId"> @movie.Category.Name</a><br>
-                        <strong>Available:</strong> Yes
-                    </p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">
-                        <a href="[MORE_DETAILS_URL]" class="btn btn-primary">More Details</a>
-                        <a href="[BOOK_TICKET_URL]" class="btn btn-danger">Book Ticket</a>
-                    </small>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">@movie.Name</h5>
+                            <p class="card-text"><small class="text-muted">MOONLIGHT - OCTOBER 28</small></p>
+                            <p class="card-text">Price: @movie.Price</p>
+                            <p class="card-text">
+                                <strong>Cinema:</strong> @movie.Cinema.Name<br>
+                                <strong>Start Date:</strong> @movie.StartDate.AddYears(1)<br>
+                                <strong>End Date:</strong> @movie.EndDate.AddYears(1)<br>
+                                <strong>Category: </strong><a href="/Category/ShowMovies/@movie.CategoryId"> @movie.Category.Name</a><br>
+                            </p>
+                        </div>
+
+                        @if (movie.EndDate.AddYears(1) < DateTime.Now)
+                        {
+                            <p class="card-text ">
+                                <h3 class="col-12 btn btn-danger text-light">Expired</h3>
+                            </p>
+                            <div class="card-footer">
+                                <small class="text-muted">
+                                    <a href="/Movie/ShowDetails/@movie.Id" class="btn btn-outline-secondary">More Details</a>
+                                    @* <a href="[BOOK_TICKET_URL]" class="btn btn-secondary">Book Ticket</a> *@
+                                </small>
+                            </div>
+                        }
+                        else if (movie.StartDate.AddYears(1) > DateTime.Now)
+                        {
+                            <p class="card-text ">
+                                <h3 class="col-12 btn btn-secondary text-light">Upcoming</h3>
+                            </p>
+                            <div class="card-footer">
+                                <small class="text-muted">
+                                    <a href="/Movie/ShowDetails/@movie.Id" class="btn btn-outline-secondary">More Details</a>
+                                    <a href="[BOOK_TICKET_URL]" class="btn btn-success">Book Ticket</a>
+                                </small>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <p class="card-text ">
+                                <h3 class="col-12 btn btn-primary text-light">Available</h3>
+                            </p>
+                            <div class="card-footer">
+                                <small class="text-muted">
+                                    <a href="/Movie/ShowDetails/@movie.Id" class="btn btn-outline-secondary">More Details</a>
+                                    <a href="[BOOK_TICKET_URL]" class="btn btn-success">Book Ticket</a>
+                                </small>
+                            </div>
+
+                        }
+
+
+                    </div>
+
+
                 </div>
             </div>
-       
 
- </div>
-        </div>
-
-}
+        }
 
     </div>
 </div>
-

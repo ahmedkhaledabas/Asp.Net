@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\ETickets.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\css\\all.min.css"
+    },
+    {
       "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -311,6 +315,38 @@
     {
       "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\webfonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\webfonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\webfonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\webfonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\webfonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\webfonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\webfonts\\fa-v4compatibility.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-v4compatibility.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\webfonts\\fa-v4compatibility.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-v4compatibility.woff2"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.ETickets.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -22,21 +22,6 @@ namespace ETickets.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ActorMovie", b =>
-                {
-                    b.Property<int>("ActorsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MoviesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ActorsId", "MoviesId");
-
-                    b.HasIndex("MoviesId");
-
-                    b.ToTable("ActorMovie");
-                });
-
             modelBuilder.Entity("ETickets.Models.Actor", b =>
                 {
                     b.Property<int>("Id")
@@ -70,19 +55,15 @@ namespace ETickets.Migrations
 
             modelBuilder.Entity("ETickets.Models.ActorMovie", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
                     b.Property<int>("ActorsId")
                         .HasColumnType("int");
 
                     b.Property<int>("MoviesId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ActorsId", "MoviesId");
+
+                    b.HasIndex("MoviesId");
 
                     b.ToTable("ActorMovies");
                 });
@@ -184,7 +165,7 @@ namespace ETickets.Migrations
                     b.ToTable("Movies");
                 });
 
-            modelBuilder.Entity("ActorMovie", b =>
+            modelBuilder.Entity("ETickets.Models.ActorMovie", b =>
                 {
                     b.HasOne("ETickets.Models.Actor", null)
                         .WithMany()
@@ -202,13 +183,13 @@ namespace ETickets.Migrations
             modelBuilder.Entity("ETickets.Models.Movie", b =>
                 {
                     b.HasOne("ETickets.Models.Category", "Category")
-                        .WithMany()
+                        .WithMany("Movies")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ETickets.Models.Cinema", "Cinema")
-                        .WithMany()
+                        .WithMany("Movies")
                         .HasForeignKey("CinemaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -216,6 +197,16 @@ namespace ETickets.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Cinema");
+                });
+
+            modelBuilder.Entity("ETickets.Models.Category", b =>
+                {
+                    b.Navigation("Movies");
+                });
+
+            modelBuilder.Entity("ETickets.Models.Cinema", b =>
+                {
+                    b.Navigation("Movies");
                 });
 #pragma warning restore 612, 618
         }

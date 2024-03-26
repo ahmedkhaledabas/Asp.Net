@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ETickets.Migrations
 {
     [DbContext(typeof(ETicketsDbContext))]
-    [Migration("20240325015109_intialDatabase")]
-    partial class intialDatabase
+    [Migration("20240325235506_intial")]
+    partial class intial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,21 +24,6 @@ namespace ETickets.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("ActorMovie", b =>
-                {
-                    b.Property<int>("ActorsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MoviesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ActorsId", "MoviesId");
-
-                    b.HasIndex("MoviesId");
-
-                    b.ToTable("ActorMovie");
-                });
 
             modelBuilder.Entity("ETickets.Models.Actor", b =>
                 {
@@ -73,19 +58,15 @@ namespace ETickets.Migrations
 
             modelBuilder.Entity("ETickets.Models.ActorMovie", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
                     b.Property<int>("ActorsId")
                         .HasColumnType("int");
 
                     b.Property<int>("MoviesId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ActorsId", "MoviesId");
+
+                    b.HasIndex("MoviesId");
 
                     b.ToTable("ActorMovies");
                 });
@@ -180,10 +161,14 @@ namespace ETickets.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("CinemaId");
+
                     b.ToTable("Movies");
                 });
 
-            modelBuilder.Entity("ActorMovie", b =>
+            modelBuilder.Entity("ETickets.Models.ActorMovie", b =>
                 {
                     b.HasOne("ETickets.Models.Actor", null)
                         .WithMany()
@@ -196,6 +181,35 @@ namespace ETickets.Migrations
                         .HasForeignKey("MoviesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ETickets.Models.Movie", b =>
+                {
+                    b.HasOne("ETickets.Models.Category", "Category")
+                        .WithMany("Movies")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ETickets.Models.Cinema", "Cinema")
+                        .WithMany("Movies")
+                        .HasForeignKey("CinemaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Cinema");
+                });
+
+            modelBuilder.Entity("ETickets.Models.Category", b =>
+                {
+                    b.Navigation("Movies");
+                });
+
+            modelBuilder.Entity("ETickets.Models.Cinema", b =>
+                {
+                    b.Navigation("Movies");
                 });
 #pragma warning restore 612, 618
         }

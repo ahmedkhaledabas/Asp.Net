@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ETickets.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/all.min.css"  />
 </head>
 <body>
     <header>
@@ -24,13 +25,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Categories</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Cinemas</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cinema" asp-action="Index">Cinemas</a>
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div>
+                <h4>Search</h4>
             </div>
         </nav>
     </header>

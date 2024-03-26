@@ -18,12 +18,28 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Num 1\Documents\GitHub\Asp.Net\Asp.Net\ETickets
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Actor/ShowDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcU2hvd0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Category/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Cinema/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Movie/ShowDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcU2hvd0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Shared/Error.cshtml]
