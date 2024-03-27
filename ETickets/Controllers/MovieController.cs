@@ -15,7 +15,7 @@ namespace ETickets.Controllers
 
         public IActionResult ShowDetails(int id)
         {
-            //var movie = Context.Movies.Where(m => m.Id == id);
+            
 
             var movie = Context.Movies.Include(m=>m.Actors)
                 .Include(m => m.Category)

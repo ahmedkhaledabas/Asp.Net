@@ -1,0 +1,27 @@
+﻿@model UserViewModel
+
+<div class="container w-50">
+    <h5 class="text-center">Login</h5>
+    <form asp-action="" asp-controller="" method="post" class="w-100">
+        
+        <div class="form-outline mb-4">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-outline mb-4">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div  class="text-center">
+            <button class="btn btn-primary align-center" type="submit"> Login </button>
+        </div>
+        
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

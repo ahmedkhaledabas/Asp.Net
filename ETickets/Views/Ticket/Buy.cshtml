@@ -1,0 +1,26 @@
+﻿@model Movie
+
+@* <div class="container alert alert-success" role="alert">
+    <h3> You Booked [ @ViewBag.quantity ] Tickets To [ @Model.Name ] Movie</h3>
+    <h5>Total Price : <strong>@(ViewBag.quantity * Model.Price)</strong></h5>
+</div> *@
+<div class="container">
+<div class="card text-center">
+    <div class="card-header">
+        
+        <img style="height:300px" src="/images/movies/@Model.ImgUrl" />
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">@Model.Name</h3>
+            <h6 class="card-text">Cinema : <strong> @Model.Cinema.Name</strong> .</h6>
+            <p class="card-text">Address : <strong> @Model.Cinema.Address</strong> . </p>
+            <h5 class="card-text text-danger">Price For <strong>@ViewBag.quantity</strong> Tickets : $ <strong> @(ViewBag.quantity * Model.Price)</strong> . </h5>
+
+    </div>
+    <div class="card-footer text-muted">
+
+            <h4>Your Date : <strong>@ViewBag.selectDate</strong></h4>
+        
+    </div>
+    </div>
+</div>

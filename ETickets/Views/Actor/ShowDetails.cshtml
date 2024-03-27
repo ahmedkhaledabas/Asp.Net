@@ -1,10 +1,13 @@
 ﻿@model Actor
 
+
+<div class="container">
+
 <div class="card h-100">
     <div class="row g-0">
 
         <div class="col-md-6">
-            <img src="/images/cast/@Model.ProfilePicture" style="height:300px" class="img-fluid rounded-start" alt="Movie poster">
+            <img src="/images/cast/@Model.ProfilePicture" style="height:300px" class="img-fluid rounded-start" alt="Movie poster" asp-append-version="true">
         </div>
 
 
@@ -44,5 +47,6 @@
         </div>
 
 
+    </div>
     </div>
 </div>

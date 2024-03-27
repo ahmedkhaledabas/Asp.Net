@@ -1,5 +1,6 @@
 ﻿using BikeStore.Data;
 using BikeStore.Models;
+using BikeStore.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,23 +19,31 @@ namespace BikeStore.Controllers
         {
             ViewData["brands"] = context.Brands.ToList();
             ViewData["category"] = context.Categories.ToList();
-            return View(new Product());
+            return View(new ProductModelView());
         }
 
-        public IActionResult Save(Product product)
+        public IActionResult Save(ProductModelView product)
         {
-
-            context.Products.Add(new()
+            if (ModelState.IsValid)
             {
-                ProductName = product.ProductName,
-                ListPrice = product.ListPrice,
-                ModelYear = product.ModelYear,
-                BrandId = product.BrandId,
-                CategoryId = product.CategoryId,
+            context.Products.Add(new()
+                        {
+                            ProductName = product.ProductName,
+                            ListPrice = product.ListPrice,
+                            ModelYear = product.ModelYear,
+                            BrandId = product.BrandId,
+                            CategoryId = product.CategoryId,
 
-            });
-            context.SaveChanges();
-            return RedirectToAction("Index");
+                        });
+                        context.SaveChanges();
+                        return RedirectToAction("Index");
+            }
+            ViewData["brands"] = context.Brands.ToList();
+            ViewData["category"] = context.Categories.ToList();
+            return View("Add", product);
+            //return RedirectToAction("Add" , product);
+
+
         }
 
         public IActionResult Delete(int id)

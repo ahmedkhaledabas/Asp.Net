@@ -31,5 +31,15 @@ namespace ETickets.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        //searchItem like movieName
+        public IActionResult Search(string searchItem)
+        {
+            var SearchItems = Context.Movies
+                .Include(m => m.Category)
+                .Include(m => m.Cinema)
+                .Where(m=>m.Name.Contains( searchItem)).ToList();
+            return View("Index", SearchItems);
+        }
     }
 }

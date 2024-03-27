@@ -8,9 +8,14 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ETickets.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="/css/all.min.css"  />
-</head>
+   </head>
 <body>
     <header>
+        @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a asp-action="SignUp" asp-controller="User" class="btn btn-outline-info">SignUp</a>
+                </div>
+                </nav> *@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <img src="/images/logo.png" style="height:50px"/>
@@ -31,14 +36,24 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cinema" asp-action="Index">Cinemas</a>
                         </li>
                     </ul>
+                    <form asp-controller="Home" asp-action="Search" method="post" class="form-inline">
+                        <div class="row">
+                            <div class="col-8">
+                                <input type="search" name="searchItem" class="form-control me-2" placeholder="Search movies..." aria-label="Search">
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-outline-secondary" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                    <a asp-action="SignUp" asp-controller="User" class="btn btn-outline-info m-2">SignUp</a>
+                    <a asp-action="LogIn" asp-controller="User" class="btn btn-outline-info m-2">LogIn</a>
                 </div>
             </div>
-            <div>
-                <h4>Search</h4>
-            </div>
+
         </nav>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -52,6 +67,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

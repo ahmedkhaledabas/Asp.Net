@@ -1,6 +1,6 @@
 ﻿@model Movie
 
-
+<div class="container">
 <div class="card h-100">
     <div class="row g-0">
 
@@ -50,7 +50,7 @@
                 </p>
                 <div class="card-footer">
                     <small class="text-muted">
-                        <a href="[BOOK_TICKET_URL]" class="btn btn-success">Book Ticket</a>
+                            <a asp-action="Book" asp-controller="Ticket" asp-route-id="@Model.Id" class="btn btn-success">Book Ticket</a>
                     </small>
                 </div>
 
@@ -62,7 +62,7 @@
                 </p>
                 <div class="card-footer">
                     <small class="text-muted">
-                        <a href="[BOOK_TICKET_URL]" class="btn btn-success">Book Ticket</a>
+                            <a asp-action="Book" asp-controller="Ticket" asp-route-id="@Model.Id" class="btn btn-success">Book Ticket</a>
                     </small>
                 </div>
 
@@ -72,5 +72,6 @@
         </div>
 
 
+    </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fUaNMQS9gfJjrZ3Qz8h9iiotxhiav2j82SAOwzk0j1Q=",
+  "Hash": "ptrJHxHPlE1/z8yCr9KgYlMIjJcMfWpgHlhNmeGbBo4=",
   "Source": "ETickets",
   "BasePath": "_content/ETickets",
   "Mode": "Default",
@@ -433,6 +433,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\movies\\movie9.png"
+    },
+    {
+      "Identity": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\Movies-TopArt.webp",
+      "SourceId": "ETickets",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\",
+      "BasePath": "_content/ETickets",
+      "RelativePath": "images/Movies-TopArt.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Movies-TopArt.webp"
     },
     {
       "Identity": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\js\\site.js",
