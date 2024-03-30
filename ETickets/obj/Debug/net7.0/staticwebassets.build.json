@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ptrJHxHPlE1/z8yCr9KgYlMIjJcMfWpgHlhNmeGbBo4=",
+  "Hash": "CV4qRT22khULEQT8H8EDuCf6VVio46Ej+XyQFBu+j6U=",
   "Source": "ETickets",
   "BasePath": "_content/ETickets",
   "Mode": "Default",
@@ -243,6 +243,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\logo.png"
+    },
+    {
+      "Identity": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\movies\\avatar.jpg",
+      "SourceId": "ETickets",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\",
+      "BasePath": "_content/ETickets",
+      "RelativePath": "images/movies/avatar.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\movies\\avatar.jpg"
     },
     {
       "Identity": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\movies\\movie1.png",

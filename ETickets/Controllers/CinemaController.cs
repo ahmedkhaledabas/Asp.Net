@@ -1,5 +1,7 @@
 ﻿using ETickets.Data;
 using ETickets.IRepository;
+using ETickets.Models;
+using ETickets.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,7 +25,26 @@ namespace ETickets.Controllers
         public IActionResult ShowMovies(int id)
         {
             var movies = cinemaRepository.GetMoviesByCinema(id);
-            return View("/Views/Home/Index.cshtml", movies );
+            return View("/Views/Movie/Index.cshtml", movies );
+        }
+
+        public IActionResult Create()
+        {
+            return View(new CinemaViewModel());
+        }
+
+        public IActionResult SaveNew(CinemaViewModel cinemaViewModel)
+        {
+            var cinema = new Cinema()
+            {
+                Id = cinemaViewModel.Id,
+                Name = cinemaViewModel.Name,
+                Description = cinemaViewModel.Description,
+                Address = cinemaViewModel.Address,
+                CinemaLogo = cinemaViewModel.CinemaLogo
+            };
+            cinemaRepository.Create(cinema);
+            return RedirectToAction("Index");
         }
     }
 }

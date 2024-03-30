@@ -15,7 +15,8 @@ namespace ETickets.Repository
         }
         void ICategoryRepository.Create(Category category)
         {
-            throw new NotImplementedException();
+            context.Categories.Add(category);
+            context.SaveChanges();
         }
 
         void ICategoryRepository.Delete(int id)
@@ -26,7 +27,11 @@ namespace ETickets.Repository
         List<Category> ICategoryRepository.ReadAll()
         {
             var categories = context.Categories.ToList();
-            return categories;
+            if(categories != null)
+            {
+                return categories;
+            }
+            throw new NullReferenceException();
         }
 
         List<Movie> ICategoryRepository.GetMoviesByCategory(int id)

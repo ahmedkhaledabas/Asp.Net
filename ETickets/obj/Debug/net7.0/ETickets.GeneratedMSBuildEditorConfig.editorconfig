@@ -22,8 +22,16 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcU2hvd0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Category/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Cinema/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Cinema/Index.cshtml]
@@ -36,6 +44,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Movie/CreateNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQ3JlYXRlTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Movie/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Movie/ShowDetails.cshtml]

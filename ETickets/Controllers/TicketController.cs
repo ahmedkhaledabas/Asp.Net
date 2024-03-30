@@ -44,7 +44,11 @@ namespace ETickets.Controllers
                 ticketRepository.Create(ticket);
                 return View("Buy", ticketRepository.ReadAll());
             }
-            else return View("Book", ticketViewModel);
+            else
+            {
+                ViewData["movie"] = movieRepository.ReadById(ticketViewModel.id);
+                return View("Book", ticketViewModel);
+            }
 
         }
 

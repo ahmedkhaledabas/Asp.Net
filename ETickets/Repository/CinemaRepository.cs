@@ -16,7 +16,8 @@ namespace ETickets.Repository
 
         void ICinemaRepository.Create(Cinema cinema)
         {
-            throw new NotImplementedException();
+            context.Cinemas.Add(cinema);
+            context.SaveChanges();
         }
 
         void ICinemaRepository.Delete(int id)

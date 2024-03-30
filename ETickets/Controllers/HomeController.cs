@@ -21,7 +21,7 @@ namespace ETickets.Controllers
 
         public IActionResult Index()
         {
-            return View(movieRepository.ReadAll());
+            return View();
         }
 
         public IActionResult Privacy()
@@ -35,9 +35,5 @@ namespace ETickets.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Search(string searchItem)
-        {
-            return View("Index", movieRepository.Search(searchItem));
-        }
     }
 }
