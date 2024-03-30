@@ -1,5 +1,7 @@
 ﻿using ETickets.Data;
+using ETickets.IRepository;
 using ETickets.Models;
+using ETickets.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +9,12 @@ namespace ETickets.Controllers
 {
     public class MovieController : Controller
     {
-        ETicketsDbContext Context = new ETicketsDbContext();
+        IMovieRepository movieRepository;
+
+        public MovieController(IMovieRepository movieRepository)
+        {
+            this.movieRepository = movieRepository;
+        }
         public IActionResult Index()
         {
             return View();
@@ -15,12 +22,7 @@ namespace ETickets.Controllers
 
         public IActionResult ShowDetails(int id)
         {
-            
-
-            var movie = Context.Movies.Include(m=>m.Actors)
-                .Include(m => m.Category)
-                .Include(m => m.Cinema)
-                .FirstOrDefault(m => m.Id == id);
+            var movie = movieRepository.ReadById(id);
             return View(movie);
         }
     }

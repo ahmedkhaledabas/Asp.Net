@@ -5,7 +5,7 @@ namespace ETickets.ViewModels
 {
     public class TicketViewModel
     {
-
+        public int id { get; set; }
         public int MovieId { get; set; }
 
         [Required]

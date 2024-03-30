@@ -1,4 +1,5 @@
 ﻿using ETickets.Data;
+using ETickets.IRepository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ETickets.Controllers
@@ -6,7 +7,12 @@ namespace ETickets.Controllers
     public class ActorController : Controller
     {
 
-        ETicketsDbContext Context = new ETicketsDbContext();
+        IActorRepository actorRepository;
+
+        public ActorController(IActorRepository actorRepository)
+        {
+            this.actorRepository = actorRepository;
+        }
         public IActionResult Index()
         {
             return View();
@@ -14,7 +20,8 @@ namespace ETickets.Controllers
 
         public IActionResult ShowDetails(int id)
         {
-            return View(Context.Actors.Find(id));
+            var actor = actorRepository.ReadById(id);
+            return View(actor);
         }
     }
 }

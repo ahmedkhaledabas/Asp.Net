@@ -1,4 +1,5 @@
 ﻿using ETickets.Data;
+using ETickets.IRepository;
 using ETickets.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,17 +9,19 @@ namespace ETickets.Controllers
 {
     public class HomeController : Controller
     {
-        ETicketsDbContext Context = new ETicketsDbContext();
+        IMovieRepository movieRepository;
+
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger , IMovieRepository movieRepository)
         {
             _logger = logger;
+            this.movieRepository = movieRepository;
         }
 
         public IActionResult Index()
         {
-            return View(Context.Movies.Include(e=>e.Category).Include(e=>e.Cinema).ToList());
+            return View(movieRepository.ReadAll());
         }
 
         public IActionResult Privacy()
@@ -32,14 +35,9 @@ namespace ETickets.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        //searchItem like movieName
         public IActionResult Search(string searchItem)
         {
-            var SearchItems = Context.Movies
-                .Include(m => m.Category)
-                .Include(m => m.Cinema)
-                .Where(m=>m.Name.Contains( searchItem)).ToList();
-            return View("Index", SearchItems);
+            return View("Index", movieRepository.Search(searchItem));
         }
     }
 }

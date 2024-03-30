@@ -1,4 +1,5 @@
 ﻿using ETickets.Data;
+using ETickets.IRepository;
 using ETickets.Models;
 using ETickets.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +9,15 @@ namespace ETickets.Controllers
 {
     public class TicketController : Controller
     {
-        ETicketsDbContext context = new ETicketsDbContext();
+        IMovieRepository movieRepository;
+        ITicketRepository ticketRepository;
+
+        public TicketController(IMovieRepository movieRepository, ITicketRepository ticketRepository)
+        {
+            this.movieRepository = movieRepository;
+            this.ticketRepository = ticketRepository;
+
+        }
         public IActionResult Index()
         {
             return View();
@@ -16,10 +25,7 @@ namespace ETickets.Controllers
 
         public IActionResult Book(int id)
         {
-            ViewData["movie"] = context.Movies.Include(m => m.Actors)
-               .Include(m => m.Category)
-               .Include(m => m.Cinema)
-               .FirstOrDefault(m => m.Id == id);
+            ViewData["movie"] = movieRepository.ReadById(id);
             return View(new TicketViewModel());
         }
 
@@ -27,15 +33,16 @@ namespace ETickets.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Tickets.Add(new()
+                var ticket = new Ticket()
                 {
-                    MovieId = ticketViewModel.MovieId,
+                    id = ticketViewModel.id,
                     DateTime = ticketViewModel.DateTime,
-                    Quantity = ticketViewModel.Quantity
-                });
-                context.SaveChanges();
-                return View("Buy", context.Tickets.Include(t => t.Movie).ThenInclude(m => m.Cinema).ToList());
-                //return RedirectToAction("Index" , "Home");
+                    Quantity = ticketViewModel.Quantity,
+                    MovieId = ticketViewModel.MovieId,
+
+                };
+                ticketRepository.Create(ticket);
+                return View("Buy", ticketRepository.ReadAll());
             }
             else return View("Book", ticketViewModel);
 

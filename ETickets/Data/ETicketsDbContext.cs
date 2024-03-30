@@ -13,6 +13,10 @@ namespace ETickets.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Cinema> Cinemas { get; set; }
 
+        public ETicketsDbContext() { } 
+
+        public ETicketsDbContext(DbContextOptions<ETicketsDbContext> options):base(options) { }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
