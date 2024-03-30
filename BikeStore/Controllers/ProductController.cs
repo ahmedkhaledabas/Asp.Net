@@ -1,5 +1,6 @@
 ﻿using BikeStore.Data;
 using BikeStore.Models;
+using BikeStore.Repository;
 using BikeStore.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,11 +9,12 @@ namespace BikeStore.Controllers
 {
     public class ProductController : Controller
     {
+        ProductRepository productRepository = new ProductRepository();
         ApplicationDbContext context = new ApplicationDbContext();
         public IActionResult Index()
         {
             
-            return View(context.Products.Include(e=>e.Category).Include(e=>e.Brand).ToList());
+            return View(productRepository.ReadAll());
         }
 
         public IActionResult Add()
@@ -48,9 +50,7 @@ namespace BikeStore.Controllers
 
         public IActionResult Delete(int id)
         {
-            var product = context.Products.First(e => e.ProductId == id);
-            context.Products.Remove(product);
-            context.SaveChanges();
+            productRepository.Delete(id);
             return RedirectToAction("Index");
         }
 
@@ -59,7 +59,16 @@ namespace BikeStore.Controllers
             ViewData["brands"] = context.Brands.ToList();
             ViewData["category"] = context.Categories.ToList();
             var product = context.Products.First(x => x.ProductId == id);
-            return View(product);
+            ProductModelView productModelView = new ProductModelView()
+            {
+                BrandId= product.BrandId,
+                CategoryId = product.CategoryId,
+                ProductName = product.ProductName,
+                ProductId = product.ProductId,
+                ModelYear = product.ModelYear,
+                ListPrice = product.ListPrice
+            };
+            return View(productModelView);
         }
 
         public IActionResult ShowProducts(int id)

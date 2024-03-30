@@ -1,26 +1,38 @@
-﻿@model Movie
+﻿@model List<Ticket>
 
-@* <div class="container alert alert-success" role="alert">
-    <h3> You Booked [ @ViewBag.quantity ] Tickets To [ @Model.Name ] Movie</h3>
-    <h5>Total Price : <strong>@(ViewBag.quantity * Model.Price)</strong></h5>
-</div> *@
 <div class="container">
-<div class="card text-center">
-    <div class="card-header">
-        
-        <img style="height:300px" src="/images/movies/@Model.ImgUrl" />
-    </div>
-    <div class="card-body">
-        <h3 class="card-title">@Model.Name</h3>
-            <h6 class="card-text">Cinema : <strong> @Model.Cinema.Name</strong> .</h6>
-            <p class="card-text">Address : <strong> @Model.Cinema.Address</strong> . </p>
-            <h5 class="card-text text-danger">Price For <strong>@ViewBag.quantity</strong> Tickets : $ <strong> @(ViewBag.quantity * Model.Price)</strong> . </h5>
 
-    </div>
-    <div class="card-footer text-muted">
+    @foreach (var ticket in Model)
+    {
+        <div class="card h-100">
+            <div class="row g-0">
+                <div class="col-md-6">
 
-            <h4>Your Date : <strong>@ViewBag.selectDate</strong></h4>
-        
-    </div>
-    </div>
+                    <img style="height:300px" src="/images/movies/@ticket.Movie.ImgUrl" />
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h3 class="card-title">@ticket.Movie.Name</h3>
+                        <h6 class="card-text">Cinema : <strong> @ticket.Movie.Cinema.Name</strong> .</h6>
+                        <p class="card-text">Address : <strong> @ticket.Movie.Cinema.Address</strong> . </p>
+                        <h5 class="card-text ">Price For <strong class="">@ticket.Quantity</strong> Tickets : $ <strong class="text-danger"> @(ticket.Quantity * ticket.Movie.Price)</strong> . </h5>
+
+                    </div>
+                    <div class="card-footer text-muted">
+                        <h6>Your Date : <strong>@ticket.DateTime</strong></h6>
+                        <h4><strong>@((ticket.DateTime - DateTime.Now).Days)</strong> Days Remaining </h4>
+                        <a asp-action="Edit" asp-controller="Ticket" asp-route-id="@ticket.id" class="btn btn-info">Edit</a>
+                        <a asp-action="Delete" asp-controller="Ticket" class="btn btn-danger">Delete</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+    }
+
 </div>
+
+

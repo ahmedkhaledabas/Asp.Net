@@ -1,5 +1,6 @@
 ﻿using ETickets.Data;
 using ETickets.Models;
+using ETickets.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,22 +16,31 @@ namespace ETickets.Controllers
 
         public IActionResult Book(int id)
         {
-
-            //return View(context.Movies.Include.Find(id));
-            var movie = context.Movies.Include(m => m.Actors)
+            ViewData["movie"] = context.Movies.Include(m => m.Actors)
                .Include(m => m.Category)
                .Include(m => m.Cinema)
                .FirstOrDefault(m => m.Id == id);
-            return View(movie);
+            return View(new TicketViewModel());
         }
 
-
-        public IActionResult Buy(Movie movie, int quantity , DateTime selectDate)
+        public IActionResult Buy(TicketViewModel ticketViewModel)
         {
-            ViewData["quantity"] = quantity;
-            ViewData["selectDate"] = selectDate;
-            return View(movie);
+            if (ModelState.IsValid)
+            {
+                context.Tickets.Add(new()
+                {
+                    MovieId = ticketViewModel.MovieId,
+                    DateTime = ticketViewModel.DateTime,
+                    Quantity = ticketViewModel.Quantity
+                });
+                context.SaveChanges();
+                return View("Buy", context.Tickets.Include(t => t.Movie).ThenInclude(m => m.Cinema).ToList());
+                //return RedirectToAction("Index" , "Home");
+            }
+            else return View("Book", ticketViewModel);
+
         }
+
     }
-    }
+}
 

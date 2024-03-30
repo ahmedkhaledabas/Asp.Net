@@ -1,0 +1,30 @@
+﻿@model ProductModelView
+
+@{
+    SelectList brands = new SelectList(ViewBag.brands, "BrandId", "BrandName");
+    SelectList categories = new SelectList(ViewBag.category, "CategoryId", "CategoryName");
+}
+<input type="hidden" asp-for="ProductId" />
+<label asp-for="ProductName"></label>
+<input asp-for="ProductName" class="form-control" />
+<span class="text-danger" asp-validation-for="ProductId"></span>
+<br />
+<label asp-for="ModelYear"></label>
+<input asp-for="ModelYear" class="form-control" />
+<span class="text-danger" asp-validation-for="ModelYear"></span>
+<br />
+
+<label asp-for="ListPrice"></label>
+<input asp-for="ListPrice" class="form-control" />
+<span class="text-danger" asp-validation-for="ListPrice"></span>
+<br />
+
+<label asp-for="BrandId"></label>
+<select asp-for="BrandId" class="form-select" asp-items="brands"></select>
+<span class="text-danger" asp-validation-for="BrandId"></span>
+<br />
+
+<label asp-for="CategoryId"></label>
+<select asp-for="CategoryId" class="form-select" asp-items="categories"></select>
+<span asp-validation-for="CategoryId"></span>
+<br />

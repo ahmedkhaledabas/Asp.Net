@@ -26,5 +26,7 @@ namespace ETickets.Models
         public Cinema Cinema { get; set; }
         public List<Actor> Actors { get; set; }
 
+        public List<Ticket> Tickets { get; set; }
+
     }
 }

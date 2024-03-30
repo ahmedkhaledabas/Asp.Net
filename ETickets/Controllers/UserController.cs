@@ -19,6 +19,8 @@ namespace ETickets.Controllers
         {
             return View(new UserViewModel());
         }
+
+
         [AutoValidateAntiforgeryToken]
         public IActionResult SaveUser(UserViewModel userViewModel)
         {
