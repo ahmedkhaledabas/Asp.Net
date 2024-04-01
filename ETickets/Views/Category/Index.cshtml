@@ -14,7 +14,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th></th>
+            <th>Movies</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +27,14 @@
             <td>
                     <a asp-controller="Category" asp-action="ShowMovies" asp-route-id="@item.Id">Show All Movies</a> 
                 
+            </td>
+            <td>
+                <a asp-action="EditCategory" asp-controller="Category" asp-route-id="@item.Id" class="m-2 text-info">
+                      <i class="fa-regular fa-pen-to-square"></i>
+                 </a>
+                 <a asp-action="Delete" asp-controller="Category" asp-route-id="@item.Id" class="m-2 text-danger">
+                     <i class="fa-solid fa-trash-can"></i>
+                  </a>
             </td>
         </tr>
 }

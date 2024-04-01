@@ -35,6 +35,8 @@ namespace ETickets.Controllers
 
         public IActionResult SaveNew(CinemaViewModel cinemaViewModel)
         {
+            if (ModelState.IsValid)
+            {
             var cinema = new Cinema()
             {
                 Id = cinemaViewModel.Id,
@@ -45,6 +47,47 @@ namespace ETickets.Controllers
             };
             cinemaRepository.Create(cinema);
             return RedirectToAction("Index");
+            }
+            return View("Create", cinemaViewModel);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            cinemaRepository.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult EditCinema(int id)
+        {
+            var cinema = cinemaRepository.ReadById(id);
+            
+                var cinemaViewModel = new CinemaViewModel()
+                {
+                    Id = cinema.Id,
+                    Name = cinema.Name,
+                    Address = cinema.Address,
+                    Description = cinema.Description,
+                    CinemaLogo = cinema.CinemaLogo
+                };
+                return View(cinemaViewModel);
+        }
+
+        public IActionResult SaveChanges(CinemaViewModel cinemaViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+            var cinema = new Cinema()
+            {
+                Id = cinemaViewModel.Id,
+                Name = cinemaViewModel.Name,
+                Description = cinemaViewModel.Description,
+                Address = cinemaViewModel.Address,
+                CinemaLogo = cinemaViewModel.CinemaLogo
+            };
+            cinemaRepository.Update(cinema);
+            return RedirectToAction("Index");
+            }
+            return View("EditCinema", cinemaViewModel);
         }
     }
 }

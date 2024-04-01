@@ -4,6 +4,7 @@ namespace ETickets.IRepository
 {
     public interface IMovieRepository
     {
+        void incramenter(int id);
         void Delete(int id);
 
         void Update(Movie movie);
@@ -14,6 +15,8 @@ namespace ETickets.IRepository
         void Create(Movie movie);
 
         List<Movie> Search(string searchItem);
+
+        List<Actor> GetActors();
 
     }
 }

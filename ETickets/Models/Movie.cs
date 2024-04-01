@@ -24,7 +24,10 @@ namespace ETickets.Models
         public Cinema Cinema { get; set; }
         public List<Actor> Actors { get; set; }
 
-        public List<Ticket> Tickets { get; set; }
+        public int CartId {  get; set; }
+        public List<Cart> Carts { get; set; }
+
+        public int Counter { get; set; }
 
     }
 }

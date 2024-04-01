@@ -1,0 +1,14 @@
+﻿
+<div class="container">
+    <form asp-action="SaveChanges" asp-controller="Cinema" method="get">
+
+        <partial name="_CreateEditCinema.cshtml"> </partial>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial.cshtml"></partial>
+}
+

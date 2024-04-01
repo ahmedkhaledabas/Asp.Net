@@ -11,11 +11,7 @@
    </head>
 <body>
     <header>
-        @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a asp-action="SignUp" asp-controller="User" class="btn btn-outline-info">SignUp</a>
-                </div>
-                </nav> *@
+      
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <img src="/images/logo.png" style="height:50px"/>
@@ -35,7 +31,23 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cinema" asp-action="Index">Cinemas</a>
                         </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Management
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" asp-action="CreateNew" asp-controller="Movie">Add Movie</a></li>
+                                    <li><a class="dropdown-item" asp-action="Create" asp-controller="Category">Add Category</a></li>
+                                    <li><a class="dropdown-item" asp-action="Create" asp-controller="Cinema">Add Cinema</a></li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
+                    <div class="row m-3">
+                        <a class="btn btn-outline-info" asp-action="Index" asp-controller="Cart"><i class=" fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                    
                     <form asp-controller="Movie" asp-action="Search" method="post" class="form-inline">
                         <div class="row">
                             <div class="col-8">

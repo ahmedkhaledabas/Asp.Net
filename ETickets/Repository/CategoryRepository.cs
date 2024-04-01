@@ -21,7 +21,13 @@ namespace ETickets.Repository
 
         void ICategoryRepository.Delete(int id)
         {
-            throw new NotImplementedException();
+            var category = context.Categories.Find(id);
+            if(category != null)
+            {
+                context.Categories.Remove(category);
+                context.SaveChanges();
+            }
+            
         }
 
         List<Category> ICategoryRepository.ReadAll()
@@ -45,12 +51,25 @@ namespace ETickets.Repository
         }
         Category ICategoryRepository.ReadById(int id)
         {
-            throw new NotImplementedException();
+            var category = context.Categories.Find(id);
+            if(category != null)
+            {
+                return category;
+            }
+            throw new NullReferenceException();
         }
 
         void ICategoryRepository.Update(Category category)
         {
-            throw new NotImplementedException();
+            var findCategory = context.Categories.Find(category.Id);
+            if(findCategory != null)
+            {
+                findCategory.Name = category.Name;
+                findCategory.Id = category.Id;
+                context.SaveChanges();
+            }
+            
+            
         }
 
     }

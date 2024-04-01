@@ -35,14 +35,52 @@ namespace ETickets.Controllers
 
         public IActionResult SaveNew(CategoryViewModel categoryViewModel)
         {
+            if (ModelState.IsValid)
+            {
             var category = new Category()
             {
                 Id = categoryViewModel.Id,
-                Name = categoryViewModel.Name,
-                
+                Name = categoryViewModel.Name
             };
-            categoryRepository.Create(category);
+             categoryRepository.Create(category);
+             return RedirectToAction("Index");
+            }
+            return View("Create", categoryViewModel);
+            
+        }
+
+        public IActionResult Delete(int id)
+        {
+            categoryRepository.Delete(id);
             return RedirectToAction("Index");
+        }
+
+        public IActionResult EditCategory(int id)
+        {
+            var category = categoryRepository.ReadById(id);
+
+            var categoryViewModel = new CategoryViewModel()
+            {
+                Id = category.Id,
+                Name = category.Name
+            };
+            return View(categoryViewModel);
+        }
+
+        public IActionResult SaveChanges(CategoryViewModel categoryViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var category = new Category()
+            {
+                Id = categoryViewModel.Id,
+                Name = categoryViewModel.Name
+            };
+            categoryRepository.Update(category);
+            return RedirectToAction("Index");
+            }
+            return View("EditCategory", categoryViewModel);
+            
         }
     }
 }

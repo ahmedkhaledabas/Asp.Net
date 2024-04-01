@@ -18,7 +18,7 @@ namespace ETickets
             options => options.UseSqlServer(builder.Configuration.GetConnectionString("name=ConnectionStrings:DefaultConnection")));
 
             builder.Services.AddScoped<IMovieRepository , MovieRepository>();
-            builder.Services.AddScoped<ITicketRepository , TicketRepository>();
+            builder.Services.AddScoped<ICartRepository , CartRepository>();
             builder.Services.AddScoped<ICategoryRepository , CategoryRepository>();
             builder.Services.AddScoped<IActorRepository, ActorRepository>();
             builder.Services.AddScoped<ICinemaRepository, CinemaRepository>();

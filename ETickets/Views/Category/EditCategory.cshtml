@@ -1,0 +1,12 @@
+﻿<div class="container">
+    <form asp-action="SaveChanges" asp-controller="Category" method="get">
+
+        <partial name="_CreateEditCategoryPartial.cshtml"></partial>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial.csHtml"></partial>
+}

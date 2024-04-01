@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ETickets.Models.Cart>
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<div class="container">
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movie)
+                </th>
+                <th>
+                    Total Price
+                </th>
+                <th>Actions </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+
+                   @*  <td id="quantity-@item.Id">
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td> *@
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Movie.Name)
+                    </td>
+                    <td>
+                        @* @Html.DisplayFor(modelItem => item.Movie.Price) *@
+                        @((item.Quantity) * (item.Movie.Price))
+                    </td>
+                    <td>
+
+                        <a class="m-2" asp-action="PlusOne" asp-controller="Cart" asp-route-id="@item.Id"><i class="text-info fa-solid fa-plus"></i></a>
+                        <a class="m-2" asp-action="MinusOne" asp-controller="Cart" asp-route-id="@item.Id"><i class="text-info fa-solid fa-minus"></i></a>
+
+                     @*    <a class="m-2" onclick="incrementQuantity(@item.Id)"><i class="text-info fa-solid fa-plus"></i></a>
+                        <a class="m-2" onclick="decrementQuantity(@item.Id)"><i class="text-info fa-solid fa-minus"></i></a> *@
+                        <a class="m-2" asp-action="Delete" asp-controller="Cart" asp-route-id="@item.Id"><i class="text-danger fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="text-center col-6">
+            <a asp-action="Recet" asp-controller="Cart" style="width:80px;" class="btn btn-outline-danger">Recet</a>
+        </div>
+        <div class="text-center col-6">
+            <a  style="width:80px;" class="btn btn-outline-success">Buy</a>
+        </div>
+    </div>
+</div>
+
+
+@* 
+@section Scripts{
+    <script>
+        function incrementQuantity(id) {
+            var quantity = parseInt($("#quantity-" + id).text());
+            $("#quantity-" + id).text(quantity + 1);
+        }
+
+        function decrementQuantity(id) {
+            var quantity = parseInt($("#quantity-" + id).text());
+            if (quantity > 1) {
+                $("#quantity-" + id).text(quantity - 1);
+            }
+        }
+    </script>
+}
+ *@

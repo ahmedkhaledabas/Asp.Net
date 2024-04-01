@@ -22,7 +22,12 @@ namespace ETickets.Repository
 
         void ICinemaRepository.Delete(int id)
         {
-            throw new NotImplementedException();
+            var cinema = context.Cinemas.Find(id);
+            if(cinema != null)
+            {
+                context.Cinemas.Remove(cinema);
+                context.SaveChanges();
+            }
         }
 
         List<Movie> ICinemaRepository.GetMoviesByCinema(int id)
@@ -47,12 +52,27 @@ namespace ETickets.Repository
 
         Cinema ICinemaRepository.ReadById(int id)
         {
-            throw new NotImplementedException();
+            var cinema = context.Cinemas.Find(id);
+            if (cinema != null)
+            {
+                return cinema;
+            }
+            throw new NullReferenceException();
         }
 
         void ICinemaRepository.Update(Cinema cinema)
         {
-            throw new NotImplementedException();
+            var findCinema = context.Cinemas.Find(cinema.Id);
+            if(findCinema != null)
+            {
+                findCinema.Name = cinema.Name;
+                findCinema.Address = cinema.Address;
+                findCinema.Description = cinema.Description;
+                findCinema.CinemaLogo = cinema.CinemaLogo;
+                context.SaveChanges();
+            }
+          
+
         }
 
 

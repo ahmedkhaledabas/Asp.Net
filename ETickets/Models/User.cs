@@ -16,6 +16,6 @@
 
         public string Phone { get; set; } = null!;
 
-
+        public string? Address { get; set; }
     }
 }

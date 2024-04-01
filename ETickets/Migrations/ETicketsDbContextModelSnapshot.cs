@@ -68,6 +68,27 @@ namespace ETickets.Migrations
                     b.ToTable("ActorMovies");
                 });
 
+            modelBuilder.Entity("ETickets.Models.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("Carts");
+                });
+
             modelBuilder.Entity("ETickets.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -122,10 +143,16 @@ namespace ETickets.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("CinemaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Counter")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -165,30 +192,6 @@ namespace ETickets.Migrations
                     b.ToTable("Movies");
                 });
 
-            modelBuilder.Entity("ETickets.Models.Ticket", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("MovieId");
-
-                    b.ToTable("Tickets");
-                });
-
             modelBuilder.Entity("ETickets.Models.ActorMovie", b =>
                 {
                     b.HasOne("ETickets.Models.Actor", null)
@@ -202,6 +205,17 @@ namespace ETickets.Migrations
                         .HasForeignKey("MoviesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ETickets.Models.Cart", b =>
+                {
+                    b.HasOne("ETickets.Models.Movie", "Movie")
+                        .WithMany("Carts")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
                 });
 
             modelBuilder.Entity("ETickets.Models.Movie", b =>
@@ -223,17 +237,6 @@ namespace ETickets.Migrations
                     b.Navigation("Cinema");
                 });
 
-            modelBuilder.Entity("ETickets.Models.Ticket", b =>
-                {
-                    b.HasOne("ETickets.Models.Movie", "Movie")
-                        .WithMany("Tickets")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Movie");
-                });
-
             modelBuilder.Entity("ETickets.Models.Category", b =>
                 {
                     b.Navigation("Movies");
@@ -246,7 +249,7 @@ namespace ETickets.Migrations
 
             modelBuilder.Entity("ETickets.Models.Movie", b =>
                 {
-                    b.Navigation("Tickets");
+                    b.Navigation("Carts");
                 });
 #pragma warning restore 612, 618
         }

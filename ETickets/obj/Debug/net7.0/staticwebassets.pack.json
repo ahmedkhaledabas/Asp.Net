@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets\\images\\movies\\avatar.jpg"
     },
     {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\movies\\best-animated.jpeg",
+      "PackagePath": "staticwebassets\\images\\movies\\best-animated.jpeg"
+    },
+    {
       "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\movies\\movie1.png",
       "PackagePath": "staticwebassets\\images\\movies\\movie1.png"
     },
@@ -91,6 +95,18 @@
     {
       "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\movies\\movie9.png",
       "PackagePath": "staticwebassets\\images\\movies\\movie9.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\movies\\new-disney.jpeg",
+      "PackagePath": "staticwebassets\\images\\movies\\new-disney.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\movies\\the-incredibles.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\the-incredibles.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\movies\\toy-story.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\toy-story.jpg"
     },
     {
       "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\js\\site.js",

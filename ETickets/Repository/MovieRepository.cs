@@ -31,10 +31,19 @@ namespace ETickets.Repository
             }
         }
 
-        public List<Movie> ReadAll()
+        public List<Actor> GetActors() => context.Actors.Select(a => new Actor { Id = a.Id, FirstName = a.FirstName }).ToList();
+
+        public void incramenter(int id)
         {
-            return context.Movies.Include(e => e.Category).Include(e => e.Cinema).ToList();
+            var movie = context.Movies.Find(id);
+            if (movie != null)
+            {
+                movie.Counter++;
+                context.SaveChanges();
+            }
         }
+        public List<Movie> ReadAll()=> context.Movies.Include(e => e.Category).Include(e => e.Cinema).ToList();
+        
 
         public Movie ReadById(int id)
         {
@@ -45,8 +54,7 @@ namespace ETickets.Repository
             if(movie != null)
             {
                 return movie;
-            }
-            return movie;
+            } return movie;
            
         }
 
