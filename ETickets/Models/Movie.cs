@@ -23,8 +23,6 @@ namespace ETickets.Models
         public Category Category { get; set; }
         public Cinema Cinema { get; set; }
         public List<Actor> Actors { get; set; }
-
-        public int CartId {  get; set; }
         public List<Cart> Carts { get; set; }
 
         public int Counter { get; set; }

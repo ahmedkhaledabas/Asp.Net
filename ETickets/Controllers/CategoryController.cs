@@ -3,11 +3,13 @@ using ETickets.IRepository;
 using ETickets.Models;
 using ETickets.Repository;
 using ETickets.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ETickets.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         ICategoryRepository categoryRepository;
@@ -16,12 +18,15 @@ namespace ETickets.Controllers
         {
             this.categoryRepository = categoryRepository;
         }
+
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var categories = categoryRepository.ReadAll();
             return View(categories);
         }
 
+        [AllowAnonymous]
         public IActionResult ShowMovies(int id)
         {
             var categories = categoryRepository.GetMoviesByCategory(id);

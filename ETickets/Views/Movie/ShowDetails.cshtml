@@ -1,5 +1,6 @@
 ﻿@model Movie
 
+
 <div class="container">
 <div class="card h-100">
     <div class="row g-0">
@@ -40,13 +41,13 @@
                     
                 }
             </div>
-            @if (Model.EndDate.AddYears(1) < DateTime.Now)
+            @if (Model.EndDate < DateTime.Now)
             {
                 <p class="card-text ">
                     <h3 class="col-12 btn btn-danger text-light">Expired</h3>
                 </p>
             }
-            else if (Model.StartDate.AddYears(1) > DateTime.Now)
+            else if (Model.StartDate > DateTime.Now)
             {
                 <p class="card-text ">
                     <h3 class="col-12 btn btn-secondary text-light">Upcoming</h3>

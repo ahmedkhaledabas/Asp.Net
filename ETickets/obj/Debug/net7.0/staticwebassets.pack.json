@@ -109,6 +109,22 @@
       "PackagePath": "staticwebassets\\images\\movies\\toy-story.jpg"
     },
     {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\users\\char1.png",
+      "PackagePath": "staticwebassets\\images\\users\\char1.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\users\\char2.png",
+      "PackagePath": "staticwebassets\\images\\users\\char2.png"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\users\\char3.jpg",
+      "PackagePath": "staticwebassets\\images\\users\\char3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\users\\default.jpg",
+      "PackagePath": "staticwebassets\\images\\users\\default.jpg"
+    },
+    {
       "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

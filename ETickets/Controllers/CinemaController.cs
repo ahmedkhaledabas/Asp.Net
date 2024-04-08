@@ -2,11 +2,13 @@
 using ETickets.IRepository;
 using ETickets.Models;
 using ETickets.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ETickets.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CinemaController : Controller
     {
         ICinemaRepository cinemaRepository;
@@ -15,24 +17,28 @@ namespace ETickets.Controllers
         {
             this.cinemaRepository = cinemaRepository;
         }
-      
+
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var cinemas = cinemaRepository.ReadAll();
             return View(cinemas);
         }
 
+        [AllowAnonymous]
         public IActionResult ShowMovies(int id)
         {
             var movies = cinemaRepository.GetMoviesByCinema(id);
             return View("/Views/Movie/Index.cshtml", movies );
         }
 
+        
         public IActionResult Create()
         {
             return View(new CinemaViewModel());
         }
 
+        
         public IActionResult SaveNew(CinemaViewModel cinemaViewModel)
         {
             if (ModelState.IsValid)
@@ -57,6 +63,8 @@ namespace ETickets.Controllers
             return RedirectToAction("Index");
         }
 
+
+
         public IActionResult EditCinema(int id)
         {
             var cinema = cinemaRepository.ReadById(id);
@@ -71,6 +79,7 @@ namespace ETickets.Controllers
                 };
                 return View(cinemaViewModel);
         }
+
 
         public IActionResult SaveChanges(CinemaViewModel cinemaViewModel)
         {

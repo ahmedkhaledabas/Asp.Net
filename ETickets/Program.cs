@@ -1,6 +1,8 @@
 using ETickets.Data;
 using ETickets.IRepository;
+using ETickets.Models;
 using ETickets.Repository;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace ETickets
@@ -18,10 +20,11 @@ namespace ETickets
             options => options.UseSqlServer(builder.Configuration.GetConnectionString("name=ConnectionStrings:DefaultConnection")));
 
             builder.Services.AddScoped<IMovieRepository , MovieRepository>();
-            builder.Services.AddScoped<ICartRepository , CartRepository>();
+            builder.Services.AddScoped<ICartRepository, CartRepository>();
             builder.Services.AddScoped<ICategoryRepository , CategoryRepository>();
             builder.Services.AddScoped<IActorRepository, ActorRepository>();
             builder.Services.AddScoped<ICinemaRepository, CinemaRepository>();
+            builder.Services.AddIdentity<ApplicationUser , IdentityRole>().AddEntityFrameworkStores<ETicketsDbContext>();
 
             var app = builder.Build();
 
@@ -33,6 +36,8 @@ namespace ETickets
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

@@ -3,29 +3,38 @@ using ETickets.IRepository;
 using ETickets.Models;
 using ETickets.Repository;
 using ETickets.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ETickets.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class MovieController : Controller
     {
-        IMovieRepository movieRepository;
-        ICategoryRepository categoryRepository;
-        ICinemaRepository cinemaRepository;
         
-        public MovieController(IMovieRepository movieRepository , ICinemaRepository cinemaRepository , ICategoryRepository categoryRepository)
+        IMovieRepository movieRepository;
+        
+        public MovieController(IMovieRepository movieRepository)
         {
             
             this.movieRepository = movieRepository;
-            this.categoryRepository = categoryRepository;
-            this.cinemaRepository = cinemaRepository;
         }
+
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View(movieRepository.ReadAll());
         }
-        
+
+        [Authorize(Roles ="Admin")]
+        public IActionResult IndexAdmin()
+        {
+            return View(movieRepository.ReadAll());
+        }
+
+
+        [AllowAnonymous]
         public IActionResult ShowDetails(int id)
         {
             movieRepository.incramenter(id);
@@ -35,14 +44,17 @@ namespace ETickets.Controllers
 
         public IActionResult CreateNew()
         {
-            ViewData["categories"] = categoryRepository.ReadAll();
-            ViewData["cinemas"] = cinemaRepository.ReadAll();
+            ViewData["categories"] = movieRepository.GetCategories();
+            ViewData["cinemas"] = movieRepository.GetCinemas();
             ViewData["actors"] = movieRepository.GetActors();
             return View(new MovieViewModel());
         }
 
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
         public IActionResult SaveNew(MovieViewModel movieViewModel)
         {
+            
             if (ModelState.IsValid)
             {
                 var movie = new Movie()
@@ -59,14 +71,23 @@ namespace ETickets.Controllers
                     Price = movieViewModel.Price
                 };
                 movieRepository.Create(movie);
+                foreach (var actor in movieRepository.GetActors())
+                {
+                    if (Request.Form.ContainsKey(actor.FirstName))
+                    {
+                        movieRepository.AddActorToMovie(movie.Id, actor.Id);
+                    }
+                };
+
+                
                 return RedirectToAction("Index");
             }
-            ViewData["categories"] = categoryRepository.ReadAll();
-            ViewData["cinemas"] = cinemaRepository.ReadAll();
+            ViewData["categories"] = movieRepository.GetCategories();
+            ViewData["cinemas"] = movieRepository.GetCinemas();
             return View("CreateNew", movieViewModel);
             
         }
-
+        [AllowAnonymous]
         public IActionResult Search(string searchItem)
         {
             searchItem = searchItem.Trim();
@@ -76,8 +97,9 @@ namespace ETickets.Controllers
         public IActionResult EditMovie(int id)
         {
             var movie = movieRepository.ReadById(id);
-            ViewData["categories"] = categoryRepository.ReadAll();
-            ViewData["cinemas"] = cinemaRepository.ReadAll();
+            ViewData["categories"] = movieRepository.GetCategories();
+            ViewData["cinemas"] = movieRepository.GetCinemas();
+            ViewData["actors"] = movieRepository.GetActors();
             var movieViewModel = new MovieViewModel()
             {
                 Id = movie.Id,
@@ -115,8 +137,8 @@ namespace ETickets.Controllers
                 movieRepository.Update(movie);
                 return RedirectToAction("Index");
             }
-            ViewData["categories"] = categoryRepository.ReadAll();
-            ViewData["cinemas"] = cinemaRepository.ReadAll();
+            ViewData["categories"] = movieRepository.GetCategories();
+            ViewData["cinemas"] = movieRepository.GetCinemas();
             return View("EditMovie", movieViewModel);
            
         }

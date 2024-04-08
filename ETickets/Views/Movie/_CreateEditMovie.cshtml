@@ -3,7 +3,6 @@
 @{
     SelectList categories = new SelectList(ViewBag.categories, "Id", "Name");
     SelectList cinemas = new SelectList(ViewBag.cinemas, "Id", "Name");
-    // SelectList actors = new SelectList(ViewBag.actors, "Id", "FirstName");
 }
 <div class="row">
     
@@ -67,15 +66,15 @@
         <br />
     </div>
 
-@* 
         @foreach(var actor in ViewBag.actors)
         {<div class="col-3">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="@actor">
-                <label class="form-check-label" for="inlineCheckbox1">@actor.FirstName</label>
+
+                <input class="form-check-input" type="checkbox" name="@actor.FirstName" id="@actor.FirstName" value="@actor.Id">
+                <label class="form-check-label" for="inlineCheckbox1"><img src="/images/cast/@actor.ProfilePicture" class="rounded-circle" asp-append-version="true"></label>
             </div>
         </div>
-        } *@
+        }
 
 
 <input type="hidden" asp-for="Id" />

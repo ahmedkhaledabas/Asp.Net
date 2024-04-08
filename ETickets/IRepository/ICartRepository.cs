@@ -5,13 +5,16 @@ namespace ETickets.IRepository
 {
     public interface ICartRepository
     {
+        ApplicationUser GetUser(string id);
         void Delete(int id);
 
         void Update(Cart cart);
 
-        List<Cart> ReadAll();
 
-        Cart ReadById(int id);
+        Cart CheckCart(ApplicationUser user);
+        List<Movie> ReadAll(ApplicationUser user);
+
+        //Cart ReadById(string id);
 
         void Create(Cart cart);
 

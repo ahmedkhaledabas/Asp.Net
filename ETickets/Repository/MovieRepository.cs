@@ -15,6 +15,17 @@ namespace ETickets.Repository
             this.context = eTicketsDbContext;
         }
 
+        public void AddActorToMovie(int movieId, int actorId)
+        {
+            context.ActorMovies.Add(new ActorMovie()
+            {
+                ActorsId = actorId,
+                MoviesId = movieId
+            });
+            context.SaveChanges();
+
+        }
+
         public void Create(Movie movie)
         {
            context.Movies.Add(movie);
@@ -31,7 +42,11 @@ namespace ETickets.Repository
             }
         }
 
-        public List<Actor> GetActors() => context.Actors.Select(a => new Actor { Id = a.Id, FirstName = a.FirstName }).ToList();
+        public List<Actor> GetActors() => context.Actors.Select(a => new Actor { Id = a.Id, FirstName = a.FirstName ,ProfilePicture = a.ProfilePicture }).ToList();
+
+        public List<Category> GetCategories() => context.Categories.ToList();
+
+        public List<Cinema> GetCinemas() => context.Cinemas.ToList();
 
         public void incramenter(int id)
         {

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -15,14 +16,20 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <img src="/images/logo.png" style="height:50px"/>
-                <a class="navbar-brand" asp-area="" asp-controller="Movie" asp-action="Index">Movie Point</a>
+                @if (!User.IsInRole("Admin"))
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Movie" asp-action="Index">Movie Point</a>
+                }
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        @if (!User.IsInRole("Admin"))
+                        {
+                             <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Movie" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
@@ -31,23 +38,39 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cinema" asp-action="Index">Cinemas</a>
                         </li>
-                        <li class="nav-item">
+                       
+                        }else
+                        {
+                            <li class="nav-item">
                             <div class="dropdown">
                                 <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Management
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" asp-action="CreateNew" asp-controller="Movie">Add Movie</a></li>
-                                    <li><a class="dropdown-item" asp-action="Create" asp-controller="Category">Add Category</a></li>
-                                    <li><a class="dropdown-item" asp-action="Create" asp-controller="Cinema">Add Cinema</a></li>
+                                    <li><a class="dropdown-item" asp-action="Index" asp-controller="Movie">Movies</a></li>
+                                    <li><a class="dropdown-item" asp-action="Index" asp-controller="Category">Categories</a></li>
+                                    <li><a class="dropdown-item" asp-action="Index" asp-controller="Cinema">Cinemas</a></li>
+                                    <li><a class="dropdown-item" asp-action="Index" asp-controller="Role">Roles</a></li>
+                                    <li><a class="dropdown-item" asp-action="Index" asp-controller="Account">Users</a></li>
                                 </ul>
                             </div>
                         </li>
+                        }
+                        
                     </ul>
-                    <div class="row m-3">
-                        <a class="btn btn-outline-info" asp-action="Index" asp-controller="Cart"><i class=" fa-solid fa-cart-shopping"></i></a>
+                    @if (!User.IsInRole("Admin"))
+                    {
+                        <div class="row m-3">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a class="btn btn-outline-info" asp-action="Index" asp-controller="Cart" asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier).Value"><i class=" fa-solid fa-cart-shopping"></i></a>
+                            }
+                            else{
+
+                                <a class="btn btn-outline-info" asp-action="Index" asp-controller="Cart" ><i class=" fa-solid fa-cart-shopping"></i></a>
+                                }
+                                
                     </div>
-                    
                     <form asp-controller="Movie" asp-action="Search" method="post" class="form-inline">
                         <div class="row">
                             <div class="col-8">
@@ -58,8 +81,35 @@
                             </div>
                         </div>
                     </form>
-                    <a asp-action="SignUp" asp-controller="User" class="btn btn-outline-info m-2">SignUp</a>
-                    <a asp-action="LogIn" asp-controller="User" class="btn btn-outline-info m-2">LogIn</a>
+                    }
+                    
+                    
+                    
+                    
+                </div>
+                <div class="d-flex">
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <a asp-action="Edit" asp-controller="Account" asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier).Value">
+                                    <img style="width:40px;" class="rounded-circle" asp-append-version="true" src="/images/users/@User.FindFirst("image").Value" />
+                                </a>
+                                <h6>@User.FindFirst(ClaimTypes.GivenName).Value</h6>
+                            </li>
+                        } else
+                        {
+                            <li class="nav-item">
+                                <a asp-action="Registeration" asp-controller="Account" class="btn btn-outline-info m-2">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-action="Login" asp-controller="Account" class="btn btn-outline-info m-2">Login</a>
+                            </li>
+                        }
+                    </ul>
+                   
+                   
+                    
                 </div>
             </div>
 

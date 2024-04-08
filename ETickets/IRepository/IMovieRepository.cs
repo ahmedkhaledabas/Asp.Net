@@ -17,6 +17,10 @@ namespace ETickets.IRepository
         List<Movie> Search(string searchItem);
 
         List<Actor> GetActors();
+        void AddActorToMovie(int movieId, int actorId);
+
+        List<Category> GetCategories();
+        List<Cinema> GetCinemas();
 
     }
 }

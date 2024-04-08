@@ -8,6 +8,7 @@
 
         public int MovieId { get; set; }
 
+        public string ApplicationUserId { get; set; }
         public CartViewModel()
         {
             Quantity = 1;

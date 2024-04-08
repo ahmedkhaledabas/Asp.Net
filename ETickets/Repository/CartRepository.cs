@@ -15,6 +15,16 @@ namespace ETickets.Repository
             this.context = eTicketsDbContext;   
         }
 
+        public ApplicationUser GetUser(string id)
+        {
+            var user = context.Users.Find(id);
+            if(user != null)
+            {
+                return user;
+            }
+            else throw new NullReferenceException();
+        }
+
         void ICartRepository.Create(Cart cart)
         {
             context.Carts.Add(cart);
@@ -31,6 +41,7 @@ namespace ETickets.Repository
             }
         }
 
+        
         Movie ICartRepository.GetMovie(int id)
         {
             var movie = context.Movies.Find(id);
@@ -41,6 +52,7 @@ namespace ETickets.Repository
             else throw new NullReferenceException();
         }
 
+    
         void ICartRepository.PlusQuntity(Cart cart)
         {
             cart.Quantity++;
@@ -53,17 +65,34 @@ namespace ETickets.Repository
             context.SaveChanges();
         }
 
-        List<Cart> ICartRepository.ReadAll()=> context.Carts.Include(c=>c.Movie).ThenInclude(m=>m.Cinema).ToList();
+        List<Movie> ICartRepository.ReadAll(ApplicationUser user)
+        {
+            var cart = context.Carts.Include(c=>c.Movies).FirstOrDefault(c=>c.ApplicationUserId == user.Id);
+            return cart.Movies;
+        } 
 
-        Cart ICartRepository.ReadById(int id) {
+        //Cart ICartRepository.ReadById(int id) {
 
-            var cart = context.Carts.Find(id);
-            if(cart != null)
-            {
-                return cart;
-            }
-            throw new NullReferenceException();
-        }
+        //    var cart = context.Carts.Find(id);
+        //    if(cart != null)
+        //    {
+        //        return cart;
+        //    }
+        //    throw new NullReferenceException();
+        //}
+
+
+        //Cart ICartRepository.ReadById(string id)
+        //{
+
+        //    var carts = context.Users.Find(id).Carts;
+        //    foreach (var c in carts)
+        //    {
+        //        return c;
+        //    }
+        //    throw new NullReferenceException();
+        //}
+
 
         void ICartRepository.Update(Cart cart)
         {
@@ -76,5 +105,12 @@ namespace ETickets.Repository
             context.SaveChanges();
         }
 
+        public Cart CheckCart(ApplicationUser user)
+        {
+            var finduser = context.Users.Find(user.Id);
+            return finduser.Cart;
+        }
+
+        
     }
 }

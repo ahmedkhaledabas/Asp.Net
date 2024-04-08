@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<ETickets.Models.Cinema>
 
 <div class="container">
-<p>
-    <a class="btn btn-outline-primary" asp-action="Create">Create New</a>
-</p>
+    <a class="btn btn-outline-info" asp-action="Create" asp-controller="Cinema">Create New</a>
 <table class="table">
     <thead>
         <tr>
@@ -11,7 +9,11 @@
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>Movies</th>
-            <th>Action</th>
+                @if (User.IsInRole("Admin"))
+                {
+                  <th>Action</th>     
+                }
+            
         </tr>
     </thead>
     <tbody>
@@ -21,14 +23,18 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                    <a asp-controller="Cinema" asp-action="ShowMovies" asp-route-id="@item.Id">Show All Movies</a> 
+                    <a class="btn btn-outline-info" asp-controller="Cinema" asp-action="ShowMovies" asp-route-id="@item.Id">Show All Movies</a> 
             </td>
-            <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td>
                 <a asp-action="EditCinema" asp-controller="Cinema" asp-route-id="@item.Id" class="m-2 text-info">
                         <i class="fa-regular fa-pen-to-square"></i> </a>
                 <a asp-action="Delete" asp-controller="Cinema" asp-route-id="@item.Id" class="m-2 text-danger">
                         <i class="fa-solid fa-trash-can"></i> </a>
             </td>
+                    }
+                    
         </tr>
 }
     </tbody>
