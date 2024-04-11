@@ -1,101 +1,101 @@
 ﻿using ETickets.IRepository;
 using ETickets.Models;
+using ETickets.Repository;
+using ETickets.Services;
 using ETickets.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace ETickets.Controllers
 {
     [Authorize]
     public class CartController : Controller
     {
-        ICartRepository cartRepository;
-        public CartController(ICartRepository cartRepository)
-        {
+        private readonly ICartRepository cartRepository;
+        List<CartViewModel> cartItems;
+
+
+        public CartController(ICartRepository cartRepository ) {
             this.cartRepository = cartRepository;
         }
 
 
-        public IActionResult Index(string id)
+        public IActionResult Index()
         {
-            var user = cartRepository.GetUser(id);
-            var movies = cartRepository.ReadAll(user);
-            return View(movies);
-        }
-
-
-        public IActionResult AddToCart(int movieId , string userId)
-        {
-            //var userd = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var movie = cartRepository.GetMovie(movieId);
-            var user = cartRepository.GetUser(userId);
-
-            if (movie == null || user == null)
+            // Retrieve data from session and pass it to the view
+            
+            if (HttpContext.Session.TryGetValue("CartItems", out byte[] sessionCartItemsBytes))
             {
-                return NotFound();
-            }
-
-            // Check if the user already has a cart
-            var cart = cartRepository.CheckCart(user);
-            if(cart==null)
-            {
-                //dont have cart
-                 cart = new Cart()
-                {
-                    Movies = new List<Movie>() { movie },
-                    ApplicationUser = user,
-                    ApplicationUserId = userId
-                };
-                cartRepository.Create(cart);
-
-
+                cartItems = System.Text.Json.JsonSerializer.Deserialize<List<CartViewModel>>(sessionCartItemsBytes);
             }
             else
             {
-                // aleready have cart
-
-                //check if user have this movie
-
-                //if(moveiCart == null)
-                //{
-                cart.Movies.Add(movie);
-                return RedirectToAction("Index", "Movie");
-                //}
-                //else
-                //{
-                //    cartRepository.PlusQuntity(cart);
-                //}
-
+                cartItems = new List<CartViewModel>();
             }
-            return RedirectToAction("Index" , "Movie");
+            return View(cartItems);
         }
 
-        public IActionResult Delete(int id)
+        public IActionResult AddToCart(CartViewModel cart)
         {
-            cartRepository.Delete(id);
+            if (ModelState.IsValid)
+            {
+                // Retrieve existing cart items from session or create a new list if none exists
+                if (HttpContext.Session.TryGetValue("CartItems", out byte[] sessionCartItemsBytes))
+                {
+                    cartItems = System.Text.Json.JsonSerializer.Deserialize<List<CartViewModel>>(sessionCartItemsBytes);
+                }
+                else
+                {
+                    cartItems = new List<CartViewModel>();
+                }
+
+                // Add new cart item to the list
+                cartItems.Add(new CartViewModel
+                {
+                    MovieName = cart.MovieName,
+                    Date = cart.Date,
+                    Quantity = cart.Quantity
+                });
+
+                // Save the updated cart items list to the session
+                byte[] cartItemsBytes = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(cartItems);
+                HttpContext.Session.Set("CartItems", cartItemsBytes);
+            }
             return RedirectToAction("Index");
         }
 
-        //public IActionResult PlusOne(int id)
-        //{
-        //    var cart = cartRepository.ReadById(id);
-        //    cartRepository.PlusQuntity(cart);
-        //    return RedirectToAction("Index");
-        //}
 
-        //public IActionResult MinusOne(int id)
-        //{
-        //    var cart = cartRepository.ReadById(id);
-        //    cartRepository.MinusQuntity(cart);
-        //    return RedirectToAction("Index");
-        //}
+        public IActionResult Book(int id)
+        {
+            var movie = cartRepository.GetMovie(id);
+            
+            return View(movie);
+        }
+
 
         public IActionResult Recet()
         {
-            cartRepository.Recet();
+           HttpContext.Session.Remove("CartItems");
             return RedirectToAction("Index");
         }
 
+
+        public IActionResult BuyNow(string id)
+        {
+            if (HttpContext.Session.TryGetValue("CartItems", out byte[] sessionCartItemsBytes))
+            {
+                cartItems = System.Text.Json.JsonSerializer.Deserialize<List<CartViewModel>>(sessionCartItemsBytes);
+                var user = cartRepository.GetUser(id);
+                SendEmail.Send(user,cartItems);
+                TempData["buySuccess"] = "Congratulation, Tickets Are Booked";
+                return RedirectToAction("Recet");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+            
+        }
     }
 }

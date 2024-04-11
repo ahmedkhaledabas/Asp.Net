@@ -17,8 +17,6 @@ namespace ETickets.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Cinema> Cinemas { get; set; }
 
-        public DbSet<MovieCart> MovieCarts {  get; set; }
-
         public ETicketsDbContext() { } 
 
         public ETicketsDbContext(DbContextOptions<ETicketsDbContext> options):base(options) { }
@@ -34,7 +32,6 @@ namespace ETickets.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Actor>().HasMany(a => a.Movies).WithMany(m => m.Actors).UsingEntity<ActorMovie>();
 
-            modelBuilder.Entity<Cart>().HasMany(c => c.Movies).WithMany(m => m.Carts).UsingEntity<MovieCart>();
 
             modelBuilder.Entity<ApplicationUser>().HasOne(u => u.Cart)
             .WithOne(c => c.ApplicationUser).HasForeignKey<Cart>(c => c.ApplicationUserId).IsRequired();
@@ -43,5 +40,7 @@ namespace ETickets.Data
         public DbSet<ETickets.ViewModels.ApplicationUserViewModel> ApplicationUserViewModel { get; set; } = default!;
 
         public DbSet<ETickets.ViewModels.RoleViewModel> RoleViewModel { get; set; } = default!;
+
+        public DbSet<ETickets.ViewModels.CartViewModel> CartViewModel { get; set; } = default!;
     }
 }

@@ -2,6 +2,7 @@ using ETickets.Data;
 using ETickets.IRepository;
 using ETickets.Models;
 using ETickets.Repository;
+using ETickets.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,14 +17,27 @@ namespace ETickets
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddDistributedMemoryCache();
+
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
+
+
             builder.Services.AddDbContext<ETicketsDbContext>(
             options => options.UseSqlServer(builder.Configuration.GetConnectionString("name=ConnectionStrings:DefaultConnection")));
 
             builder.Services.AddScoped<IMovieRepository , MovieRepository>();
-            builder.Services.AddScoped<ICartRepository, CartRepository>();
             builder.Services.AddScoped<ICategoryRepository , CategoryRepository>();
             builder.Services.AddScoped<IActorRepository, ActorRepository>();
             builder.Services.AddScoped<ICinemaRepository, CinemaRepository>();
+            builder.Services.AddScoped<ICartRepository, CartRepository>();
+            builder.Services.AddScoped<IGetUserPropertiesRepository, GetUserPropertiesRepository>();
+            builder.Services.AddScoped<GetUserProperties>();
             builder.Services.AddIdentity<ApplicationUser , IdentityRole>().AddEntityFrameworkStores<ETicketsDbContext>();
 
             var app = builder.Build();
@@ -40,6 +54,8 @@ namespace ETickets
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.MapControllerRoute(
                 name: "default",

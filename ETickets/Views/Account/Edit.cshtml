@@ -1,5 +1,8 @@
 ﻿@using System.Security.Claims
+@using ETickets.Services
 @model ApplicationUser
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Edit";
@@ -77,6 +80,11 @@
 
         <div class="form-outline mb-4">
             <input class="form-group" type="file" asp-for="Image" />
+            @{
+                GetUserProperties user = new GetUserProperties();
+                var userId = HttpContextAccessor.HttpContext.Session.GetString("userId");
+                <img style="width:100px;" class="rounded-circle" asp-append-version="true" src="/images/users/@user.GetUserImage(userId)" />
+            }
         </div>
 
         <div class="row form-outline mb-4">

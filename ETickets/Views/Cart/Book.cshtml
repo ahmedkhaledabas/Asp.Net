@@ -1,0 +1,67 @@
+﻿@using System.Security.Claims
+@model Movie
+
+<div class="container">
+    <form asp-action="AddToCart" asp-controller="Cart" method="get">
+        <input type="hidden" name="MovieName" value="@Model.Name" />
+        <div class="card h-100">
+            <div class="row g-0">
+                <div class="col-md-6">
+                    <img src="/images/movies/@Model.ImgUrl" style="height:600px" class="img-fluid rounded-start" alt="Movie poster">
+                </div>
+                <div class="col-md-6 mt-5">
+                    <div class="card-body d-flex flex-column">
+                        <div class="row">
+                            <h5 class="col-6 card-title">@Model.Name</h5>
+                            <i class="col-6 text-info  fa-regular fa-eye"><strong class="m-2">@Model.Counter</strong></i>
+                        </div>
+                        <p class="card-text"><strong>Price: </strong> @Model.Price</p>
+                        <p class="card-text">
+                            <strong>Cinema:</strong> @Model.Cinema.Name<br>
+                            <strong>Category: </strong><a href="/Category/ShowMovies/@Model.CategoryId"> @Model.Category.Name</a><br>
+                        </p>
+                    </div>
+                    <div class="row mt-6 justify-content-center">
+                        <div class="col-6">
+
+                            @{
+                                DateTime start = DateTime.Now;
+                            }
+                            <label class="text-info" for="Date">Day Of Ticket</label>
+                            <select name="Date" class="form-select" aria-label="Default select example">
+                                <option selected value="@start.Date.ToString("yyyy-MM-dd")">@start.Date.ToString("MM-dd dddd")</option>
+
+                                @{
+                                    for (start.AddDays(1); start <= Model.EndDate; start = start.AddDays(1))
+                                    {
+                                        <option value="@start.Date.ToString("yyyy-MM-dd")">@start.Date.ToString("MM-dd dddd")</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label class="text-info" for="quantity">
+                                Number Of Tickets</labe>
+                                <select name="quantity" class="form-select" aria-label="Default select example">
+                                    <option selected>1</option>
+                                    @{
+                                        for (int i = 2; i < 10; i++)
+                                        {
+                                            <option value="@i">@i</option>
+                                        }
+                                    }
+                                </select>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <button type="submit" class="btn btn-outline-info">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial.cshtml"></partial>
+}

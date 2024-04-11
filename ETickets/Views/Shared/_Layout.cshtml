@@ -1,4 +1,7 @@
 ﻿@using System.Security.Claims
+@using ETickets.Services
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,7 +66,7 @@
                         <div class="row m-3">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <a class="btn btn-outline-info" asp-action="Index" asp-controller="Cart" asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier).Value"><i class=" fa-solid fa-cart-shopping"></i></a>
+                                <a class="btn btn-outline-info" asp-action="Index" asp-controller="Cart" ><i class=" fa-solid fa-cart-shopping"></i></a>
                             }
                             else{
 
@@ -89,13 +92,17 @@
                 </div>
                 <div class="d-flex">
                     <ul class="navbar-nav flex-grow-1">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li>
-                                <a asp-action="Edit" asp-controller="Account" asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier).Value">
-                                    <img style="width:40px;" class="rounded-circle" asp-append-version="true" src="/images/users/@User.FindFirst("image").Value" />
+                        @{
+
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                GetUserProperties user = new GetUserProperties();
+                                var userId = HttpContextAccessor.HttpContext.Session.GetString("userId");
+                                <li>
+                                <a asp-action="Edit" asp-controller="Account" asp-route-id="@userId">
+                                        <img style="width:40px;" class="rounded-circle" asp-append-version="true" src="/images/users/@user.GetUserImage(userId)" />
                                 </a>
-                                <h6>@User.FindFirst(ClaimTypes.GivenName).Value</h6>
+                                <h6>@user.GetUserFirstName(userId)</h6>
                             </li>
                         } else
                         {
@@ -105,7 +112,7 @@
                             <li class="nav-item">
                                 <a asp-action="Login" asp-controller="Account" class="btn btn-outline-info m-2">Login</a>
                             </li>
-                        }
+                        }}
                     </ul>
                    
                    

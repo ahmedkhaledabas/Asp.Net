@@ -1,17 +1,18 @@
-﻿namespace ETickets.ViewModels
+﻿using ETickets.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace ETickets.ViewModels
 {
     public class CartViewModel
     {
         public int Id { get; set; }
 
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
-        public int MovieId { get; set; }
+        public string MovieName { get; set; }
 
-        public string ApplicationUserId { get; set; }
-        public CartViewModel()
-        {
-            Quantity = 1;
-        }
+        [Required]
+        public DateTime Date { get; set; }
+       
     }
 }

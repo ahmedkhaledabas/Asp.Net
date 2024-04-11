@@ -258,3 +258,6 @@ C:\Users\Num 1\Documents\GitHub\Asp.Net\Asp.Net\ETickets\bin\Debug\net7.0\Micros
 C:\Users\Num 1\Documents\GitHub\Asp.Net\Asp.Net\ETickets\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Num 1\Documents\GitHub\Asp.Net\Asp.Net\ETickets\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Num 1\Documents\GitHub\Asp.Net\Asp.Net\ETickets\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Users\Num 1\Documents\GitHub\Asp.Net\Asp.Net\ETickets\bin\Debug\net7.0\MailKit.dll
+C:\Users\Num 1\Documents\GitHub\Asp.Net\Asp.Net\ETickets\bin\Debug\net7.0\MimeKit.dll
+C:\Users\Num 1\Documents\GitHub\Asp.Net\Asp.Net\ETickets\bin\Debug\net7.0\BouncyCastle.Crypto.dll

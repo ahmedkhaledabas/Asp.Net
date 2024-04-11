@@ -94,17 +94,9 @@
                                 <h3 class="col-12 btn btn-secondary text-light">Upcoming</h3>
                             </p>
                             <div class="card-footer">
-                                <small class="text-muted">
+                                <small class=" text-muted">
                                     <a asp-action="ShowDetails" asp-controller="Movie" asp-route-id="@movie.Id" class="btn btn-outline-secondary">More Details </a>
-                                    @if (User.IsInRole("User"))
-                                    {
-                                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-movieId="@movie.Id" asp-route-userId="@User.FindFirst(ClaimTypes.NameIdentifier).Value" class="btn btn-success text-center">
-                                        <i class=" fa-solid fa-cart-plus"></i></a>
-                                    }else{
-                                        <a asp-action="AddToCart" asp-controller="Cart" class="btn btn-success text-center">
-                                            <i class=" fa-solid fa-cart-plus"></i>
-                                        </a>
-                                            }
+                                        <a asp-action="Book" asp-controller="Cart" asp-route-id="@movie.Id" class="btn btn-outline-success">Book Now</a>
                                 </small>
                             </div>
                         }
@@ -116,18 +108,7 @@
                             <div class="card-footer">
                                 <small class="text-muted">
                                     <a asp-action="ShowDetails" asp-controller="Movie" asp-route-id="@movie.Id" class="btn btn-outline-secondary">More Details </a>
-                                    @if (User.Identity.IsAuthenticated)
-                                    {
-                                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-movieId="@movie.Id" asp-route-userId="@User.FindFirst(ClaimTypes.NameIdentifier).Value" class="btn btn-success text-center">
-                                            <i class=" fa-solid fa-cart-plus"></i>
-                                        </a>
-                                    }
-                                    else
-                                    {
-                                        <a asp-action="AddToCart" asp-controller="Cart" class="btn btn-success text-center">
-                                            <i class=" fa-solid fa-cart-plus"></i>
-                                        </a>
-                                    }
+                                    <a asp-action="Book" asp-controller="Cart" asp-route-id="@movie.Id" class="btn btn-outline-success">Book Now</a>
                                     
                                 </small>
                             </div>

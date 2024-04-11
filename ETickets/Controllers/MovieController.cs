@@ -2,6 +2,7 @@
 using ETickets.IRepository;
 using ETickets.Models;
 using ETickets.Repository;
+using ETickets.Services;
 using ETickets.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -57,19 +58,7 @@ namespace ETickets.Controllers
             
             if (ModelState.IsValid)
             {
-                var movie = new Movie()
-                {
-                    Id = movieViewModel.Id,
-                    Name = movieViewModel.Name,
-                    Description = movieViewModel.Description,
-                    StartDate = movieViewModel.StartDate,
-                    EndDate = movieViewModel.EndDate,
-                    CategoryId = movieViewModel.CategoryId,
-                    CinemaId = movieViewModel.CinemaId,
-                    ImgUrl = movieViewModel.ImgUrl,
-                    TrailerUrl = movieViewModel.TrailerUrl,
-                    Price = movieViewModel.Price
-                };
+                var movie = TransferMovie.VMToMovie(movieViewModel);
                 movieRepository.Create(movie);
                 foreach (var actor in movieRepository.GetActors())
                 {
@@ -100,20 +89,7 @@ namespace ETickets.Controllers
             ViewData["categories"] = movieRepository.GetCategories();
             ViewData["cinemas"] = movieRepository.GetCinemas();
             ViewData["actors"] = movieRepository.GetActors();
-            var movieViewModel = new MovieViewModel()
-            {
-                Id = movie.Id,
-                Name = movie.Name,
-                Description = movie.Description,
-                StartDate = movie.StartDate,
-                EndDate = movie.EndDate,
-                CategoryId = movie.CategoryId,
-                CinemaId = movie.CinemaId,
-                ImgUrl = movie.ImgUrl,
-                TrailerUrl = movie.TrailerUrl,
-                Price = movie.Price
-
-            };
+            var movieViewModel = TransferMovie.MovieToMovieVM(movie);
             return View( movieViewModel);
         }
 
@@ -121,19 +97,7 @@ namespace ETickets.Controllers
         {
             if (ModelState.IsValid)
             {
-                var movie = new Movie()
-                {
-                    Id = movieViewModel.Id,
-                    Name = movieViewModel.Name,
-                    Description = movieViewModel.Description,
-                    StartDate = movieViewModel.StartDate,
-                    EndDate = movieViewModel.EndDate,
-                    CategoryId = movieViewModel.CategoryId,
-                    CinemaId = movieViewModel.CinemaId,
-                    ImgUrl = movieViewModel.ImgUrl,
-                    TrailerUrl = movieViewModel.TrailerUrl,
-                    Price = movieViewModel.Price
-                };
+                var movie = TransferMovie.VMToMovie(movieViewModel);
                 movieRepository.Update(movie);
                 return RedirectToAction("Index");
             }
@@ -148,6 +112,8 @@ namespace ETickets.Controllers
             movieRepository.Delete(id);
             return RedirectToAction("Index");
         }
+
+       
 
         
     }

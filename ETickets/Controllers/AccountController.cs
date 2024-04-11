@@ -31,6 +31,10 @@ namespace ETickets.Controllers
         [HttpGet]
         public IActionResult Registeration()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Movie");
+            }
             return View();
         }
 
@@ -80,10 +84,12 @@ namespace ETickets.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Movie");
+            }
             return View();
         }
-
-        
 
 
         [HttpPost]
@@ -99,14 +105,16 @@ namespace ETickets.Controllers
                     var checkPass = await userManager.CheckPasswordAsync(user, userLoginViewModel.Password);
                     if (checkPass)
                     {
-                        await signInManager.SignInWithClaimsAsync(user, userLoginViewModel.RememberMe, new List<Claim>
-                        {
-                            //session
-                            new Claim(ClaimTypes.GivenName, user.FirstName),
-                            new Claim(ClaimTypes.Gender, user.Gender.ToString()),
-                            new Claim("Image", (user.Image == null ? "default.jpg" : user.Image)),
-                            new Claim(ClaimTypes.NameIdentifier , user.Id)
-                        });
+                        //session
+                        await signInManager.SignInAsync(user, userLoginViewModel.RememberMe);
+                        HttpContext.Session.SetString("userId", user.Id);
+                        //await signInManager.SignInWithClaimsAsync(user, userLoginViewModel.RememberMe, new List<Claim>
+                        //{
+                        //    new Claim(ClaimTypes.GivenName, user.FirstName),
+                        //    new Claim(ClaimTypes.Gender, user.Gender.ToString()),
+                        //    new Claim("Image", (user.Image == null ? "default.jpg" : user.Image)),
+                        //    new Claim(ClaimTypes.NameIdentifier , user.Id)
+                        //});
                         return RedirectToAction("Index", "Movie");
                     }
                     else ModelState.AddModelError(string.Empty, "Invalid UserName Or Password");
@@ -120,6 +128,7 @@ namespace ETickets.Controllers
 
         public async Task<IActionResult> Logout()
         {
+            HttpContext.Session.Clear();
             await signInManager.SignOutAsync();
             return RedirectToAction("Index","Movie");
         }
