@@ -21,7 +21,7 @@ namespace ETickets
 
             builder.Services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.IdleTimeout = TimeSpan.FromMinutes(1);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
@@ -36,7 +36,6 @@ namespace ETickets
             builder.Services.AddScoped<IActorRepository, ActorRepository>();
             builder.Services.AddScoped<ICinemaRepository, CinemaRepository>();
             builder.Services.AddScoped<ICartRepository, CartRepository>();
-            builder.Services.AddScoped<IGetUserPropertiesRepository, GetUserPropertiesRepository>();
             builder.Services.AddScoped<GetUserProperties>();
             builder.Services.AddIdentity<ApplicationUser , IdentityRole>().AddEntityFrameworkStores<ETicketsDbContext>();
 

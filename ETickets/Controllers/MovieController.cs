@@ -109,6 +109,8 @@ namespace ETickets.Controllers
 
         public IActionResult Delete(int id)
         {
+            var moveName = movieRepository.ReadById(id).Name;
+            TempData["delete"] = $"{moveName} Deleted Successfuly";
             movieRepository.Delete(id);
             return RedirectToAction("Index");
         }

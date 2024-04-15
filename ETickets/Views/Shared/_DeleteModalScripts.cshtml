@@ -1,0 +1,20 @@
+﻿<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteLinks = document.querySelectorAll('.delete-link');
+        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+        const confirmDeleteModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+
+        deleteLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                const itemId = this.getAttribute('data-item-id');
+                confirmDeleteModal.show();
+
+                confirmDeleteBtn.onclick = function () {
+                    // Redirect to the delete action with the constructed URL
+                    window.location.href ='/Movie/Delete/'+ itemId;
+                };
+            });
+        });
+    });
+</script>

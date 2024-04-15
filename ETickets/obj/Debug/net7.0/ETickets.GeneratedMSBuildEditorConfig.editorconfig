@@ -70,6 +70,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcX0NyZWF0ZUVkaXRDYXRlZ29yeVBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Category/_DeleteModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcX0RlbGV0ZU1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Category/_DeleteModalScripts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcX0RlbGV0ZU1vZGFsU2NyaXB0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Cinema/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -84,6 +92,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Cinema/_CreateEditCinema.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hXF9DcmVhdGVFZGl0Q2luZW1hLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Cinema/_DeleteModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hXF9EZWxldGVNb2RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Cinema/_DeleteModalScripts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hXF9EZWxldGVNb2RhbFNjcmlwdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Home/Index.cshtml]
@@ -118,6 +134,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcX0NyZWF0ZUVkaXRNb3ZpZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Movie/_DeleteModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcX0RlbGV0ZU1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Movie/_DeleteModalScripts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcX0RlbGV0ZU1vZGFsU2NyaXB0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Role/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -132,6 +156,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Shared/_DeleteModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EZWxldGVNb2RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Shared/_DeleteModalScripts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EZWxldGVNb2RhbFNjcmlwdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Num 1/Documents/GitHub/Asp.Net/Asp.Net/ETickets/Views/Shared/_ValidationScriptsPartial.cshtml]

@@ -41,23 +41,22 @@
                     
                 }
             </div>
-            @if (Model.EndDate < DateTime.Now)
+            @if (Model.MovieStatus == MovieStatus.Expired)
             {
                 <p class="card-text ">
                     <h3 class="col-12 btn btn-danger text-light">Expired</h3>
                 </p>
             }
-            else if (Model.StartDate > DateTime.Now)
+            else if (Model.MovieStatus == MovieStatus.Upcoming)
             {
                 <p class="card-text ">
                     <h3 class="col-12 btn btn-secondary text-light">Upcoming</h3>
                 </p>
                 <div class="card-footer">
                     <small class="text-muted">
-                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.Id" class="btn btn-success text-center"><i class=" fa-solid fa-cart-plus"></i></a>
+                            <a asp-action="Book" asp-controller="Cart" asp-route-id="@Model.Id" class="btn btn-outline-success">Book Now</a>
                     </small>
                 </div>
-
             }
             else
             {
@@ -66,16 +65,11 @@
                 </p>
                 <div class="card-footer">
                     <small class="text-muted">
-                            <a asp-action="Book" asp-controller="Ticket" asp-route-id="@Model.Id" class="btn btn-success">Book Ticket</a>
+                            <a asp-action="Book" asp-controller="Cart" asp-route-id="@Model.Id" class="btn btn-outline-success">Book Now</a>
                     </small>
                 </div>
-
             }
-
-
         </div>
-
-
     </div>
     </div>
 </div>

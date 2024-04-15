@@ -17,10 +17,10 @@ namespace ETickets.Services
             foreach (var item in cartItems)
             {
                 cartItemsHtml.Append($@"
-                <h3 class='text-info'>Movie Name: {item.MovieName}</h3>
+                <h2> <strong>Movie Name: </strong>  {item.MovieName}</h2>
                 <ol>
-                <li><p>Date: {item.Date.ToShortDateString()}</p></li>
-                <li><p>Quantity: {item.Quantity}</P></li>
+                <li><p> <strong> Date: </strong>{item.Date.ToShortDateString()}</p></li>
+                <li><p><strong> Quantity: </strong>{item.Quantity}</P></li>
                 </ol></hr>"
                 );
             }
@@ -28,7 +28,7 @@ namespace ETickets.Services
             string appPassword = "udixwwgiwfdyivkv";
             string senderName = "ETickets Web";
             string recipientEmail = user.Email;
-            string subject = $"Successful Purchase";
+            string subject = $"ETickets Teams";
             string body = $@"
         <html>
         <head>
@@ -38,7 +38,7 @@ namespace ETickets.Services
         </head>
         <body>
             <div class='container'>
-            <h3>Dear <span class='text-info'>{user.FirstName}</span> ,</h3>
+            <h3>Dear <span>{user.FirstName}</span> ,</h3>
                 <p>Here are the items in your cart:</p>
                 {cartItemsHtml.ToString()}
             </div>

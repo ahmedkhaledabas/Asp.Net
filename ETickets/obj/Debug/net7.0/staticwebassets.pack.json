@@ -57,6 +57,14 @@
       "PackagePath": "staticwebassets\\images\\movies\\best-animated.jpeg"
     },
     {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\movies\\cindrella.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\cindrella.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\movies\\fantastic_.jpg",
+      "PackagePath": "staticwebassets\\images\\movies\\fantastic_.jpg"
+    },
+    {
       "Id": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\ETickets\\wwwroot\\images\\movies\\movie1.png",
       "PackagePath": "staticwebassets\\images\\movies\\movie1.png"
     },

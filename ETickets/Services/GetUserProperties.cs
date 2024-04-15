@@ -19,20 +19,5 @@ namespace ETickets.Services
         }
 
 
-        //IGetUserPropertiesRepository getUserPropertiesRepository;
-
-        //public GetUserProperties() { }
-        //public GetUserProperties(IGetUserPropertiesRepository getUserPropertiesRepository)
-        //{
-        //    this.getUserPropertiesRepository = getUserPropertiesRepository;
-        //}
-
-        //public string GetUserImage(string id)
-        //{
-        //    var image = getUserPropertiesRepository.GetUserImage(id);
-        //    return image;
-        //}
-
-        //public string GetUserFirstName(string id) => getUserPropertiesRepository.GetUserFirstName(id);
     }
 }

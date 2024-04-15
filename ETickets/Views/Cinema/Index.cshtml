@@ -1,7 +1,11 @@
 ﻿@model IEnumerable<ETickets.Models.Cinema>
 
 <div class="container">
+    @if (User.IsInRole("Admin"))
+                {
+        <partial name="_DeleteModal.cshtml"></partial>
     <a class="btn btn-outline-info" asp-action="Create" asp-controller="Cinema">Create New</a>
+                }
 <table class="table">
     <thead>
         <tr>
@@ -30,7 +34,7 @@
                         <td>
                 <a asp-action="EditCinema" asp-controller="Cinema" asp-route-id="@item.Id" class="m-2 text-info">
                         <i class="fa-regular fa-pen-to-square"></i> </a>
-                <a asp-action="Delete" asp-controller="Cinema" asp-route-id="@item.Id" class="m-2 text-danger">
+                            <a href="#" data-item-id="@item.Id" class="m-2 text-danger delete-link">
                         <i class="fa-solid fa-trash-can"></i> </a>
             </td>
                     }
@@ -40,3 +44,11 @@
     </tbody>
 </table>
 </div>
+@{
+    if (User.IsInRole("Admin"))
+    {
+        @section Scripts {
+        <partial name="_DeleteModalScripts"></partial>
+        }
+    }
+}
