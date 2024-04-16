@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ayjxtypSI7TOUYV3uhAWPcFV2oOaK5SsiXdckoFkRQGpmzaUvB9JC9RnOqoFbwpTmZCP/sD1ijJ76KkLyV/hBA==",
+  "dgSpecHash": "7Xxl0dgAQvnnKHcuH022IbEktEa4ytNOjP3aSdgCzJXO+kYQDiRXT6l6YGDvyhpRwlVQNIzh7OacbJhUJ6ibIQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Num 1\\Documents\\GitHub\\APIs\\LabStore\\LabStore.csproj",
+  "projectFilePath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\APIs\\LabStore\\LabStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Num 1\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Num 1\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

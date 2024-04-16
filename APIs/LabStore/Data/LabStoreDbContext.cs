@@ -11,6 +11,7 @@ namespace LabStore.Data
         public LabStoreDbContext(DbContextOptions<LabStoreDbContext> options) : base() { }
         public DbSet<Labtop> Labs { get; set; }
         public DbSet<Brand> Brands { get; set; }
+        public DbSet<ContactUs> ContactUs {  get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

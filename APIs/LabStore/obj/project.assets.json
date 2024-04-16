@@ -3605,11 +3605,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Num 1\\Documents\\GitHub\\APIs\\LabStore\\LabStore.csproj",
+      "projectUniqueName": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\APIs\\LabStore\\LabStore.csproj",
       "projectName": "LabStore",
-      "projectPath": "C:\\Users\\Num 1\\Documents\\GitHub\\APIs\\LabStore\\LabStore.csproj",
+      "projectPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\APIs\\LabStore\\LabStore.csproj",
       "packagesPath": "C:\\Users\\Num 1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Num 1\\Documents\\GitHub\\APIs\\LabStore\\obj\\",
+      "outputPath": "C:\\Users\\Num 1\\Documents\\GitHub\\Asp.Net\\Asp.Net\\APIs\\LabStore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Num 1\\AppData\\Roaming\\NuGet\\NuGet.Config",

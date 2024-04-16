@@ -26,6 +26,7 @@ namespace LabStore
                 option => option.UseSqlServer(builder.Configuration.GetConnectionString("name=ConnectionStrings:Default")));
             builder.Services.AddScoped<ILabtopRepository, LabRepository>();
             builder.Services.AddScoped<IBrandRepository , BrandRepository>();
+            builder.Services.AddScoped<IContactUsRepository, ContactUsRepository>();
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<LabStoreDbContext>();
             
             var app = builder.Build();
