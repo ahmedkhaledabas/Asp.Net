@@ -1,4 +1,9 @@
 
+using Microsoft.EntityFrameworkCore;
+using UniversityManagement.Data;
+using UniversityManagement.IRepository;
+using UniversityManagement.Repository;
+
 namespace UniversityManagement
 {
     public class Program
@@ -13,6 +18,12 @@ namespace UniversityManagement
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            //service ask controller
+            builder.Services.AddDbContext<UniversityDbContext>(
+                option => option.UseSqlServer(builder.Configuration.GetConnectionString("name = ConnectionStrings:Default")));
+            builder.Services.AddScoped<ICollegeRepo , CollegeRepo>();
+            
 
             var app = builder.Build();
 
