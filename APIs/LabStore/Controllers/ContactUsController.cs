@@ -1,7 +1,7 @@
-﻿using LabStore.DTOs;
+using LabStore.DTOs;
 using LabStore.IRepository;
 using LabStore.Services;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LabStore.Controllers
@@ -18,36 +18,27 @@ namespace LabStore.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ContactUsDTO usDTO)
+        public IActionResult Create([FromBody] ContactUsDTO usDTO)
         {
-            if (ModelState.IsValid)
-            {
-                var contactUs = TransferContactUs.ContactUsDtoToContact(usDTO);
-                contactUsRepository.Create(contactUs);
-                return Ok(usDTO);
-            }
-            return BadRequest();
+            var contactUs = TransferContactUs.ContactUsDtoToContact(usDTO);
+            contactUsRepository.Create(contactUs);
+            return StatusCode(StatusCodes.Status201Created);
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult GetAll()
         {
             var contacts = contactUsRepository.GetAll();
-            var contactsDto = TransferContactUs.ContactUsToDtos(contacts);
-            return Ok(contactsDto);
+            return Ok(TransferContactUs.ContactUsToDtos(contacts));
         }
 
-        [HttpGet]
-        [Route("{id}")]
+        [HttpGet("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult GetById(int id)
         {
             var contactUs = contactUsRepository.GetById(id);
-            if(contactUs != null)
-            {
-                var contactDto = TransferContactUs.ContactUsToContactDto(contactUs);
-                return Ok(contactDto);
-            }
-            return NotFound();
+            return contactUs is null ? NotFound() : Ok(TransferContactUs.ContactUsToContactDto(contactUs));
         }
     }
 }
