@@ -1,7 +1,7 @@
-﻿using LabStore.DTOs;
+using LabStore.DTOs;
 using LabStore.IRepository;
 using LabStore.Services;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LabStore.Controllers
@@ -21,89 +21,68 @@ namespace LabStore.Controllers
         public IActionResult GetAll()
         {
             var labs = labtopRepository.GetLabs();
-            var labsDto = TransferLabtop.LabsToLabsDto(labs);
-            return Ok(labsDto);
+            return Ok(TransferLabtop.LabsToLabsDto(labs));
         }
 
-        [HttpGet]
-        [Route("{id}")]
+        [HttpGet("{id:int}")]
         public IActionResult GetById(int id)
         {
             var lab = labtopRepository.GetLab(id);
-            if(lab != null)
-            {
-                var labDTO = TransferLabtop.LabToLabDto(lab);
-            return Ok(labDTO);
-            }
-            return NotFound();
+            return lab is null ? NotFound() : Ok(TransferLabtop.LabToLabDto(lab));
         }
 
         [HttpPost]
-        public IActionResult Create(LabtopDTO labtop)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Create([FromBody] LabtopDTO labtop)
         {
             var lab = TransferLabtop.LabDtoToLab(labtop);
             labtopRepository.CreateLab(lab);
-            return Ok(labtop);
+            return CreatedAtAction(nameof(GetById), new { id = lab.Id }, TransferLabtop.LabToLabDto(lab));
         }
 
-        [HttpGet]
-        [Route("search/{searchItem}")]
+        [HttpGet("search/{searchItem}")]
         public IActionResult Search(string searchItem)
         {
             var labs = labtopRepository.SearchByLab(searchItem);
-            var labs2 = labtopRepository.SearchByBrand(searchItem);
-            if (labs.Count > 0)
+            if (labs.Count == 0)
             {
-                var labsDTO = TransferLabtop.LabsToLabsDto(labs);
-                return Ok(labsDTO);
-            }else if(labs2.Count > 0)
-            {
-                var labsDTO = TransferLabtop.LabsToLabsDto(labs2);
-                return Ok(labsDTO);
+                labs = labtopRepository.SearchByBrand(searchItem);
             }
-            return NotFound();
+
+            return labs.Count == 0
+                ? NotFound()
+                : Ok(TransferLabtop.LabsToLabsDto(labs));
         }
 
-        [HttpGet]
-        [Route("filterBrand/")]
-        public IActionResult GetByBrand(int id)
+        [HttpGet("filterBrand")]
+        public IActionResult GetByBrand([FromQuery] int id)
         {
             var labs = labtopRepository.GetByBrand(id);
-            if(labs.Count > 0)
-            {
-                var labDTO = TransferLabtop.LabsToLabsDto(labs);
-                return Ok(labDTO);
-            }
-            return NotFound();
+            return labs.Count == 0 ? NotFound() : Ok(TransferLabtop.LabsToLabsDto(labs));
         }
 
-        [HttpGet]
-        [Route("filterPrice/")]
-        public IActionResult GetByPrice(decimal min , decimal max)
+        [HttpGet("filterPrice")]
+        public IActionResult GetByPrice([FromQuery] decimal min, [FromQuery] decimal max)
         {
+            if (min < 0 || max < min)
+            {
+                return BadRequest(new { message = "Price range is invalid." });
+            }
+
             var labs = labtopRepository.GetByPrice(min, max);
-            if (labs.Count > 0)
-            {
-                var labDTO = TransferLabtop.LabsToLabsDto(labs);
-                return Ok(labDTO);
-            }
-            return NotFound();
+            return labs.Count == 0 ? NotFound() : Ok(TransferLabtop.LabsToLabsDto(labs));
         }
 
-
-        [HttpGet]
-        [Route("filterRate/")]
-        public IActionResult GetByRate(int rate)
+        [HttpGet("filterRate")]
+        public IActionResult GetByRate([FromQuery] int rate)
         {
-            var labs = labtopRepository.GetByRate(rate);
-            if (labs.Count > 0)
+            if (rate is < 0 or > 5)
             {
-                var labDTO = TransferLabtop.LabsToLabsDto(labs);
-                return Ok(labDTO);
+                return BadRequest(new { message = "Rate must be between 0 and 5." });
             }
-            return NotFound();
+
+            var labs = labtopRepository.GetByRate(rate);
+            return labs.Count == 0 ? NotFound() : Ok(TransferLabtop.LabsToLabsDto(labs));
         }
-
-
     }
 }
