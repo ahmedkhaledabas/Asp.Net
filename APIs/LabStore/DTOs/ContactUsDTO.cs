@@ -13,6 +13,9 @@ namespace LabStore.DTOs
         [StringLength(254)]
         public string Email { get; set; } = string.Empty;
 
+        [StringLength(200)]
+        public string Subject { get; set; } = string.Empty;
+
         [Required]
         [StringLength(4000, MinimumLength = 5)]
         public string Message { get; set; } = string.Empty;
