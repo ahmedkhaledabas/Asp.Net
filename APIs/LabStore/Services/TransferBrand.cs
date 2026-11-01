@@ -1,39 +1,30 @@
-﻿using LabStore.DTOs;
+using LabStore.DTOs;
 using LabStore.Models;
 
 namespace LabStore.Services
 {
     public static class TransferBrand
     {
-        public static Brand BrandDtoToBrand(BrandDTO brand)
+        public static Brand BrandDtoToBrand(BrandDTO dto)
         {
-            var newBrand = new Brand()
+            return new Brand
             {
-                Id = brand.Id,
-                Name = brand.Name
+                Name = dto.Name
             };
-            return newBrand;
         }
 
         public static BrandDTO BrandToBrandDto(Brand brand)
         {
-            var newBrand = new BrandDTO()
+            return new BrandDTO
             {
                 Id = brand.Id,
                 Name = brand.Name
             };
-            return newBrand;
         }
 
-        public static List<BrandDTO> BrandsToBrandsDto(List<Brand> brands)
+        public static List<BrandDTO> BrandsToBrandsDto(IEnumerable<Brand> brands)
         {
-            List<BrandDTO> brandDTOs = new List<BrandDTO>();
-            foreach (var item in brands)
-            {
-                var newDto = BrandToBrandDto(item);
-                brandDTOs.Add(newDto);
-            }
-            return brandDTOs;
+            return brands.Select(BrandToBrandDto).ToList();
         }
     }
 }
