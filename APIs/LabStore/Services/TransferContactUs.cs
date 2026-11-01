@@ -1,17 +1,18 @@
-﻿using LabStore.DTOs;
+using LabStore.DTOs;
 using LabStore.Models;
 
 namespace LabStore.Services
 {
     public static class TransferContactUs
     {
-        public static ContactUs ContactUsDtoToContact (ContactUsDTO contactUsDto)
+        public static ContactUs ContactUsDtoToContact(ContactUsDTO contactUsDto)
         {
             return new ContactUs
             {
                 Email = contactUsDto.Email,
                 Message = contactUsDto.Message,
-                Name = contactUsDto.Name
+                Name = contactUsDto.Name,
+                Subject = contactUsDto.Subject
             };
         }
 
@@ -21,24 +22,14 @@ namespace LabStore.Services
             {
                 Email = contactUs.Email,
                 Message = contactUs.Message,
-                Name = contactUs.Name
+                Name = contactUs.Name,
+                Subject = contactUs.Subject
             };
         }
 
-        public static List<ContactUsDTO> ContactUsToDtos (List<ContactUs> contacts)
+        public static List<ContactUsDTO> ContactUsToDtos(IEnumerable<ContactUs> contacts)
         {
-            List<ContactUsDTO> usDTOs = new List<ContactUsDTO> ();
-            foreach (ContactUs contact in contacts)
-            {
-                var dto = new ContactUsDTO()
-                {
-                    Name = contact.Name,
-                    Email = contact.Email,
-                    Message = contact.Message
-                };
-                usDTOs.Add(dto);
-            }
-            return usDTOs;
+            return contacts.Select(contact => ContactUsToContactDto(contact)).ToList();
         }
     }
 }
