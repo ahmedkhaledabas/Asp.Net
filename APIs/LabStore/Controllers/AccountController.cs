@@ -62,6 +62,9 @@ namespace LabStore.Controllers
                 return ValidationProblem(ModelState);
             }
 
+            // Sign in the newly registered account so the protected profile URL is usable.
+            await signInManager.SignInAsync(user, isPersistent: false);
+
             return CreatedAtAction(
                 nameof(GetById),
                 new { id = user.Id },
