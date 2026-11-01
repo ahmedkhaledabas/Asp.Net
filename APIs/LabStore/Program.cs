@@ -1,4 +1,3 @@
-
 using LabStore.Data;
 using LabStore.IRepository;
 using LabStore.Models;
@@ -12,37 +11,72 @@ namespace LabStore
     {
         public static void Main(string[] args)
         {
-            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
             var builder = WebApplication.CreateBuilder(args);
+
+            var connectionString = builder.Configuration.GetConnectionString("Default");
+            if (string.IsNullOrWhiteSpace(connectionString))
+            {
+                throw new InvalidOperationException(
+                    "Connection string 'Default' is missing. Configure it using user-secrets or environment variables.");
+            }
+
+            var allowedOrigins = builder.Configuration
+                .GetSection("Cors:AllowedOrigins")
+                .Get<string[]>() ?? ["http://localhost:4200"];
 
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
-                                  policy =>
-                                  {
-                                      policy.AllowAnyOrigin()
-                                            .AllowAnyHeader()
-                                            .AllowAnyMethod();
-                                  });
+                options.AddPolicy("Frontend", policy =>
+                {
+                    policy.WithOrigins(allowedOrigins)
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials();
+                });
             });
-            // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            //service ask controller
-            builder.Services.AddDbContext<LabStoreDbContext>(
-                option => option.UseSqlServer(builder.Configuration.GetConnectionString("name=ConnectionStrings:Default")));
+            builder.Services.AddDbContext<LabStoreDbContext>(options =>
+                options.UseSqlServer(connectionString));
+
             builder.Services.AddScoped<ILabtopRepository, LabRepository>();
-            builder.Services.AddScoped<IBrandRepository , BrandRepository>();
+            builder.Services.AddScoped<IBrandRepository, BrandRepository>();
             builder.Services.AddScoped<IContactUsRepository, ContactUsRepository>();
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<LabStoreDbContext>();
-            
+
+            builder.Services
+                .AddIdentity<ApplicationUser, IdentityRole>(options =>
+                {
+                    options.User.RequireUniqueEmail = true;
+                    options.Lockout.AllowedForNewUsers = true;
+                    options.Lockout.MaxFailedAccessAttempts = 5;
+                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+                })
+                .AddEntityFrameworkStores<LabStoreDbContext>()
+                .AddDefaultTokenProviders();
+
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                options.Cookie.SameSite = SameSiteMode.Strict;
+                options.SlidingExpiration = true;
+                options.Events.OnRedirectToLogin = context =>
+                {
+                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    return Task.CompletedTask;
+                };
+                options.Events.OnRedirectToAccessDenied = context =>
+                {
+                    context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                    return Task.CompletedTask;
+                };
+            });
+
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -50,12 +84,9 @@ namespace LabStore
             }
 
             app.UseHttpsRedirection();
-
-            app.UseCors(MyAllowSpecificOrigins);
-
+            app.UseCors("Frontend");
+            app.UseAuthentication();
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();
