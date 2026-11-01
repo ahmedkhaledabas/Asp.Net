@@ -30,7 +30,7 @@ namespace LabStore.Controllers
         {
             var brand = TransferBrand.BrandDtoToBrand(brandDto);
             brandRepository.CreateBrand(brand);
-            return CreatedAtAction(nameof(GetAll), TransferBrand.BrandToBrandDto(brand));
+            return Ok(TransferBrand.BrandToBrandDto(brand));
         }
     }
 }
