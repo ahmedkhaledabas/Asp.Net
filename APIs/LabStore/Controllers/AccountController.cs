@@ -1,7 +1,7 @@
-﻿using LabStore.DTOs;
+using LabStore.DTOs;
 using LabStore.Models;
 using LabStore.Services;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,105 +14,107 @@ namespace LabStore.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager , SignInManager<ApplicationUser> signInManager)
+        public AccountController(
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetAll()
         {
-           var users = userManager.Users.ToList();
-            var userDtos = TransferUser.UsersToUserDtos(users);
-            return Ok(userDtos);
+            var users = await userManager.Users.ToListAsync();
+            return Ok(TransferUser.UsersToUserDtos(users));
         }
 
-
-        [HttpGet]
-        [Route("GetById{id}")]
+        [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetById(string id)
         {
-            var user = await userManager.FindByIdAsync(id);
-            if(user != null)
+            var isAdmin = User.IsInRole("Admin");
+            var currentUserId = userManager.GetUserId(User);
+            if (!isAdmin && currentUserId != id)
             {
-                var userDto = TransferUser.UserToUserDto(user);
-                return Ok(userDto);
+                return Forbid();
             }
-            return NotFound();
+
+            var user = await userManager.FindByIdAsync(id);
+            return user is null ? NotFound() : Ok(TransferUser.UserToUserDto(user));
         }
 
-
-        [HttpPost]
-        [Route("Register")]
-        public async Task<IActionResult> Registeration(ApplicationUserDTO applicationUserDTO)
+        [HttpPost("Register")]
+        public async Task<IActionResult> Registeration([FromBody] ApplicationUserDTO dto)
         {
-            if (ModelState.IsValid)
+            var user = TransferUser.UserDtoToUser(dto);
+            var created = await userManager.CreateAsync(user, dto.Password);
+
+            if (!created.Succeeded)
             {
-               var user = TransferUser.UserDtoToUser(applicationUserDTO);
-                var created = await userManager.CreateAsync(user, applicationUserDTO.PasswordHash);
-                if (created.Succeeded)
-                {
-                    return Ok(applicationUserDTO);
-                }
                 foreach (var error in created.Errors)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    ModelState.AddModelError(error.Code, error.Description);
                 }
-                return BadRequest();
+
+                return ValidationProblem(ModelState);
             }
-            return BadRequest();
+
+            return CreatedAtAction(
+                nameof(GetById),
+                new { id = user.Id },
+                TransferUser.UserToUserDto(user));
         }
 
-        [HttpPost]
-        [Route("Login")]
-        public async Task<IActionResult> Login(UserLoginDTO userLoginDTO)
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] UserLoginDTO dto)
         {
-            if (ModelState.IsValid)
+            var result = await signInManager.PasswordSignInAsync(
+                dto.UserName,
+                dto.Password,
+                dto.RememberMe,
+                lockoutOnFailure: true);
+
+            if (!result.Succeeded)
             {
-                var user = await userManager.FindByNameAsync(userLoginDTO.UserName);
-                if (user != null)
-                {
-                    var checkPass = await userManager.CheckPasswordAsync(user, userLoginDTO.Password);
-                    if (checkPass)
-                    {
-                        await signInManager.SignInAsync(user, userLoginDTO.RememberMe);
-                        return Ok(userLoginDTO);
-                    }
-                    ModelState.AddModelError(string.Empty, "Invalid UserName Or Password");
-                }
-                return BadRequest();
+                return Unauthorized(new { message = "Invalid username or password." });
             }
-            ModelState.AddModelError(string.Empty, "Invalid UserName Or Password");
-            return BadRequest();
+
+            var user = await userManager.FindByNameAsync(dto.UserName);
+            return user is null
+                ? Unauthorized(new { message = "Invalid username or password." })
+                : Ok(TransferUser.UserToUserDto(user));
         }
 
-        
-        [HttpGet]
-        [Route("logout")]
+        [HttpPost("Logout")]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-            return Ok();
+            return NoContent();
         }
 
-        [HttpDelete]
-        [Route("Delete/{id}")]
+        [HttpDelete("Delete/{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(string id)
         {
             var user = await userManager.FindByIdAsync(id);
-            if (user != null)
+            if (user is null)
             {
-                var isDeletes =await userManager.DeleteAsync(user);
-                if (isDeletes.Succeeded)
-                {
-                    var userDto = TransferUser.UserToUserDto(user);
-                    return Ok(userDto);
-                }
-                
+                return NotFound();
             }
-            return NotFound();
-        }
 
+            var result = await userManager.DeleteAsync(user);
+            if (!result.Succeeded)
+            {
+                return BadRequest(new
+                {
+                    errors = result.Errors.Select(error => error.Description)
+                });
+            }
+
+            return NoContent();
+        }
     }
 }
