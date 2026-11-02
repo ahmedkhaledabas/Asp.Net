@@ -1,52 +1,36 @@
-﻿using LabStore.DTOs;
+using LabStore.DTOs;
 using LabStore.Models;
-using Microsoft.AspNetCore.Identity;
 
 namespace LabStore.Services
 {
     public static class TransferUser
     {
-        public static ApplicationUser UserDtoToUser(ApplicationUserDTO applicationUserDTO)
+        public static ApplicationUser UserDtoToUser(ApplicationUserDTO dto)
         {
             return new ApplicationUser
             {
-                FirstName = applicationUserDTO.FirstName,
-                LastName = applicationUserDTO.LastName,
-                Email = applicationUserDTO.Email,
-                PasswordHash = applicationUserDTO.PasswordHash,
-                UserName = applicationUserDTO.UserName
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                Email = dto.Email,
+                UserName = dto.UserName
             };
         }
 
-        public static ApplicationUserDTO UserToUserDto(ApplicationUser applicationUser)
+        public static UserResponseDTO UserToUserDto(ApplicationUser user)
         {
-            return new ApplicationUserDTO
+            return new UserResponseDTO
             {
-                FirstName = applicationUser.FirstName,
-                LastName = applicationUser.LastName,
-                Email = applicationUser.Email,
-                PasswordHash = applicationUser.PasswordHash,
-                UserName = applicationUser.UserName
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                UserName = user.UserName
             };
         }
 
-        public static List<ApplicationUserDTO> UsersToUserDtos(List<ApplicationUser> applicationUsers)
+        public static List<UserResponseDTO> UsersToUserDtos(IEnumerable<ApplicationUser> users)
         {
-            List<ApplicationUserDTO> applicationUserDTOs = new List<ApplicationUserDTO>();
-            foreach (var item in applicationUsers)
-            {
-                var userDto = new ApplicationUserDTO()
-                {
-                    FirstName = item.FirstName,
-                    LastName = item.LastName,
-                    Email = item.Email,
-                    PasswordHash = item.PasswordHash,
-                    UserName = item.UserName
-                };
-                applicationUserDTOs.Add(userDto);
-            }
-            return applicationUserDTOs;  
-            
+            return users.Select(UserToUserDto).ToList();
         }
     }
 }

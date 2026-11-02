@@ -1,6 +1,5 @@
-﻿using LabStore.Models;
 using LabStore.DTOs;
-using Microsoft.AspNetCore.Mvc.ActionConstraints;
+using LabStore.Models;
 
 namespace LabStore.Services
 {
@@ -8,43 +7,36 @@ namespace LabStore.Services
     {
         public static LabtopDTO LabToLabDto(Labtop labtop)
         {
-        LabtopDTO newLab = new LabtopDTO()
-        {
-            Id = labtop.Id,
-            Name = labtop.Name,
-            Price = labtop.Price,
-            Discount = (decimal)labtop.Discount,
-            Description = labtop.Description,
-            Rate = (int)labtop.Rate,
-            BrandId = labtop.BrandId
-        };
-            return newLab;
-        }
-
-        public static Labtop LabDtoToLab(LabtopDTO labtop)
-        {
-            Labtop newLab = new Labtop()
+            return new LabtopDTO
             {
                 Id = labtop.Id,
                 Name = labtop.Name,
                 Price = labtop.Price,
-                Discount = (decimal)labtop.Discount,
+                Discount = labtop.Discount,
                 Description = labtop.Description,
-                Rate = (int)labtop.Rate,
-                BrandId = labtop.BrandId
+                Rate = labtop.Rate,
+                BrandId = labtop.BrandId,
+                Model = labtop.Model
             };
-            return newLab;
         }
 
-        public static List<LabtopDTO> LabsToLabsDto(List<Labtop> labs)
+        public static Labtop LabDtoToLab(LabtopDTO labtop)
         {
-            List<LabtopDTO> labtopDTOs = new List<LabtopDTO>();
-            foreach (var item in labs)
+            return new Labtop
             {
-                var labDto = LabToLabDto(item);
-                labtopDTOs.Add(labDto);
-            }
-            return labtopDTOs;
+                Name = labtop.Name,
+                Price = labtop.Price,
+                Discount = labtop.Discount ?? 0,
+                Description = labtop.Description ?? string.Empty,
+                Rate = labtop.Rate ?? 0,
+                BrandId = labtop.BrandId,
+                Model = labtop.Model
+            };
+        }
+
+        public static List<LabtopDTO> LabsToLabsDto(IEnumerable<Labtop> labs)
+        {
+            return labs.Select(LabToLabDto).ToList();
         }
     }
 }

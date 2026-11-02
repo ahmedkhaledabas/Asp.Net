@@ -1,7 +1,7 @@
-﻿using LabStore.DTOs;
+using LabStore.DTOs;
 using LabStore.IRepository;
 using LabStore.Services;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LabStore.Controllers
@@ -21,16 +21,16 @@ namespace LabStore.Controllers
         public IActionResult GetAll()
         {
             var brands = brandRepository.GetBrands();
-            var brandsDto = TransferBrand.BrandsToBrandsDto(brands);
-            return Ok(brandsDto);
+            return Ok(TransferBrand.BrandsToBrandsDto(brands));
         }
 
         [HttpPost]
-        public IActionResult Create(BrandDTO brandDto)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Create([FromBody] BrandDTO brandDto)
         {
             var brand = TransferBrand.BrandDtoToBrand(brandDto);
             brandRepository.CreateBrand(brand);
-            return Ok(brandDto);
+            return Ok(TransferBrand.BrandToBrandDto(brand));
         }
     }
 }
