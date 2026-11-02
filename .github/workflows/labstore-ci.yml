@@ -1,0 +1,24 @@
+name: LabStore CI
+
+on:
+  push:
+    branches: [portfolio/harden-labstore-api]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Restore
+        run: dotnet restore APIs/LabStore/LabStore.csproj
+      - name: Build
+        run: dotnet build APIs/LabStore/LabStore.csproj --configuration Release --no-restore
+      - name: Test
+        run: dotnet test APIs/LabStore/LabStore.csproj --configuration Release --no-build --verbosity normal
